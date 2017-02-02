@@ -18,6 +18,13 @@
             <ul class="nav navbar-nav">
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <p class="navbar-text">
+                        <a href="#">
+                            <i class="icon md-ticket-star"></i> Interested in VIP Packages?
+                        </a>
+                    </p>
+                </li>
                 @if (Auth::guest())
                     <li><a href="{{ url('/register') }}">REGISTER</a></li>
                     <li><a href="{{ url('/login') }}">LOGIN</a></li>

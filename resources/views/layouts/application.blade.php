@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', '2017 Turkish Airlines Euroleague') | Detur</title>
+    <title>@yield('title', '2017 Turkish Airlines Euroleague') | Detur Official Travel Agency</title>
 
     <link rel="stylesheet" href="{{ asset('css/global/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
@@ -19,6 +19,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    @yield('fonts')
 </head>
 <body class="app">
     @include('partials.navbar')
@@ -27,5 +29,7 @@
 
     <script src="{{ asset('js/global/jquery.min.js') }}"></script>
     <script src="{{ asset('js/global/bootstrap.min.js') }}"></script>
+
+    @yield('footer.js')
 </body>
 </html>
