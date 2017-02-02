@@ -1,6 +1,7 @@
 .app {
     padding-top: 60px;
-    background: #f1f4f5;
+    background: #fff;
+    color: #768395;
 }
 
 /**
@@ -32,6 +33,33 @@ NAVBAR
     text-decoration: none;
     background-color: #fff;
     color: #0da7bc;
+}
+
+.navbar-text {
+    padding: 10px;
+    background: #008EA3;
+    border: 1px solid #008EA3;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.navbar-text:hover {
+    border: 1px solid #007489;
+    cursor: pointer;
+}
+
+.navbar-text > a {
+    color: #e4eaec;
+}
+
+.navbar-text:hover > a {
+    color: #fff;
+}
+
+.navbar-text > a:hover {
+    color: #fff;
+    text-decoration: none;
 }
 
 /**
@@ -70,6 +98,10 @@ SIDEBAR
 .singleCategory:hover {
     background: rgba(228, 234, 236, 0.5);
     cursor: pointer;
+}
+
+.singleCategory:last-of-type {
+    border-bottom: none;
 }
 
 .categoryColor {
@@ -120,4 +152,30 @@ CONTENT
     color: #37474f;
     margin-top: 10px;
     font-weight: 400;
+}
+
+.reviews {
+    padding: 10px 15px 0 15px;
+}
+
+.hotel-point {
+    background: #62a8ea;
+    color: #fff;
+    padding: 10px;
+}
+
+/**
+UTILITIES
+**/
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.small-font {
+    font-size: 12px;
+    color: #a3afb7;
 }
