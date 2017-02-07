@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <p class="navbar-text">
-                        <a href="#">
+                        <a href="{{ asset('misc/VIP.pdf') }}" target="_blank">
                             Interested in VIP Packages?
                         </a>
                     </p>
