@@ -77,6 +77,7 @@ SIDEBAR
     position: relative;
     padding: 0;
     margin: 0;
+    min-height: 100vh;
     float: left;
     background: #fff;
     box-shadow: 2px 0 10px rgba(0,0,0,.1), 1px 0 0 rgba(0,0,0,.05);
