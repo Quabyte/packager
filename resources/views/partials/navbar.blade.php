@@ -21,7 +21,7 @@
                 <li>
                     <p class="navbar-text">
                         <a href="#">
-                            <i class="icon md-ticket-star"></i> Interested in VIP Packages?
+                            Interested in VIP Packages?
                         </a>
                     </p>
                 </li>
@@ -49,6 +49,11 @@
                         </ul>
                     </li>
                 @endif
+                <li>
+                    <a href="#" class="custom-navbar-a">
+                        <i class="icon pe-3x pe-cart"></i>
+                    </a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

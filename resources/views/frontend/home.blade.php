@@ -1,7 +1,7 @@
 @extends('layouts.application')
 
 @section('fonts')
-    <link rel="stylesheet" href="{{ asset('fonts/material-design/material-design.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/7-stroke/7-stroke.min.css') }}">
 @stop
 
 @section('content')
@@ -18,15 +18,7 @@
 @section('footer.js')
     <script src="{{ asset('js/seatbit/fabric.min.js') }}"></script>
     <script src="{{ asset('js/seatbit/zone.js') }}"></script>
-    <script>
-        var canvas = new fabric.Canvas('c');
-
-        canvas.loadFromJSON({!! $venue !!});
-        canvas.renderAll();
-    </script>
-    <script src="{{ asset('js/seatbit/responsive.js') }}"></script>
-    <script>
-        console.log('Width: ' + canvas.width);
-        console.log('Height: ' + canvas.height);
-    </script>
+    <script src="{{ asset('js/seatbit/seat.js') }}"></script>
+    <script src="{{ asset('js/seatbit/seatbit.js') }}"></script>
+{{--    <script src="{{ asset('js/seatbit/responsive.js') }}"></script>--}}
 @stop
