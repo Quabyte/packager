@@ -24,7 +24,7 @@ $(document).ready(function () {
 function selected(el) {
     if (el.target.type == 'zone') {
         axios({
-            method: 'get',
+            method: 'GET',
             url: '/get-data' + '/z' + el.target.number
         })
             .then(function (response) {
@@ -41,6 +41,19 @@ function selected(el) {
         // Temporarily block the seat
         // Start 10min counter for the seat
     }
+}
+
+function getZoneView(zone) {
+    axios({
+        method: 'GET',
+        url: '/get-data/z' + zone
+    })
+        .then(function (response) {
+            canvas.clear();
+            canvas.setZoom(1 / 1.5);
+            canvas.loadFromJSON(response.data);
+            canvas.renderAll();
+        });
 }
 
 function responsive()

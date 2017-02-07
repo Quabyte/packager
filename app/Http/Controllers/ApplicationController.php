@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SeatCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -9,7 +10,9 @@ class ApplicationController extends Controller
 {
     public function index()
     {
-        return view('frontend.home');
+        $categories = SeatCategory::where('online', '=', true)->get();
+
+        return view('frontend.home', compact('categories'));
     }
 
     public function package()
