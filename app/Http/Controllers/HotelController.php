@@ -15,7 +15,7 @@ class HotelController extends Controller
     public function index()
     {
         $hotels = Hotel::all();
-        dd(json_encode($hotels));
+
         return view('frontend.hotels', compact('hotels'));
     }
 

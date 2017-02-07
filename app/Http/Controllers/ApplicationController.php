@@ -9,12 +9,26 @@ class ApplicationController extends Controller
 {
     public function index()
     {
-        $venue = Storage::get('seatbit/venue.json');
-        return view('frontend.home', compact('venue'));
+        return view('frontend.home');
     }
 
     public function package()
     {
         return view('frontend.package');
+    }
+
+    public function loadVenue()
+    {
+        $venue = Storage::get('seatbit/venue.json');
+
+        return response($venue);
+    }
+
+    public function getData($fileName)
+    {
+        $path = 'seatbit/zones/' . $fileName . '.json';
+        $data = Storage::get($path);
+
+        return response($data);
     }
 }
