@@ -1,5 +1,5 @@
 .app {
-    padding-top: 60px;
+    padding-top: 62px;
     background: #fff;
     color: #768395;
 }
@@ -8,9 +8,9 @@
 NAVBAR
 **/
 .navbar-custom {
-    background-color: #0da7bc;
+    background-color: #fff;
     min-height: 60px;
-    border: none;
+    border: 1px solid #ebebeb;
 }
 
 .navbar-brand-custom {
@@ -19,38 +19,45 @@ NAVBAR
     padding: 10px 5px;
     font-size: 20px;
     line-height: 20px;
-    color: #fff !important;
+    color: #57c7d4 !important;
     text-decoration: none !important;
 }
 
 .navbar-nav>li>a {
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #fff;
+    color: #57c7d4;
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
-    background-color: #fff;
-    color: #0da7bc;
+    background-color: #57c7d4;
+    color: #fff;
+}
+
+.custom-navbar-a {
+    padding-top: 14px !important;
+    padding-bottom: 13px !important;
+    background-color: #62a8ea !important;
+    color: #fff !important;
 }
 
 .navbar-text {
     padding: 10px;
-    background: #008EA3;
-    border: 1px solid #008EA3;
+    background: #57c7d4;
+    border: 1px solid #57c7d4;
     border-radius: 6px;
     margin-top: 10px;
     margin-bottom: 0;
 }
 
 .navbar-text:hover {
-    border: 1px solid #007489;
+    border: 1px solid #47B8C6;
     cursor: pointer;
 }
 
 .navbar-text > a {
-    color: #e4eaec;
+    color: #F3F7F9;
 }
 
 .navbar-text:hover > a {
@@ -162,6 +169,21 @@ CONTENT
     background: #62a8ea;
     color: #fff;
     padding: 10px;
+}
+
+/**
+BUTTONS
+**/
+.btn-default {
+    background: #e4eaec;
+    border-color: #e4eaec;
+    color: #76838f;
+}
+
+.btn-default:hover {
+    background: #ccd5db;
+    border-color: #ccd5db;
+    color: #76838f;
 }
 
 /**
