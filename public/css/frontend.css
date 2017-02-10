@@ -44,20 +44,21 @@ NAVBAR
 
 .navbar-text {
     padding: 10px;
-    background: #57c7d4;
-    border: 1px solid #57c7d4;
+    background: #F96868;
+    border: 1px solid #F96868;
     border-radius: 6px;
     margin-top: 10px;
     margin-bottom: 0;
 }
 
 .navbar-text:hover {
-    border: 1px solid #47B8C6;
+    background: #E9595B;
+    border: 1px solid #E9595B;
     cursor: pointer;
 }
 
 .navbar-text > a {
-    color: #F3F7F9;
+    color: #fff;
 }
 
 .navbar-text:hover > a {
@@ -201,4 +202,56 @@ UTILITIES
 .small-font {
     font-size: 12px;
     color: #a3afb7;
+}
+
+/**
+CART
+**/
+#cart {
+    right: -100%;
+    background: #fff;
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    transition: right 0.3s;
+    box-shadow: -2px 2px 1px 0px rgba(0,0,0,0.05);
+}
+
+#cart.speed-in {
+    right: 0;
+    width: 25%;
+    float: right;
+    top: 62px;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+}
+
+#cart > * {
+    padding: 0 1em;
+}
+
+#cart > h2 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 1em 0;
+}
+
+#cart .cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart .cart-items li {
+    position: relative;
+    padding: 1em;
+    border-top: 1px solid #e0e6ef;
+}
+
+#cart .cart-items li:last-child {
+    border-bottom: 1px solid #e0e6ef;
+}
+
+#cart .cart-price {
+    color: #a5aebc;
 }

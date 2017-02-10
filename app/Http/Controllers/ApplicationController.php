@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SeatCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
@@ -11,8 +12,9 @@ class ApplicationController extends Controller
     public function index()
     {
         $categories = SeatCategory::where('online', '=', true)->get();
-
-        return view('frontend.home', compact('categories'));
+        $uuid = str_random(6);
+        Cookie::queue('uuid', $uuid, 20);
+        return view('frontend.home', compact('categories', 'uuid'));
     }
 
     public function package()

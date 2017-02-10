@@ -1,7 +1,11 @@
 var canvas = new fabric.Canvas('c', {
-    backgroundColor: '#eeeeee'
+    backgroundColor: '#eeeeee',
+    selection: false
 });
 
+/**
+ * Loads the main zone view canvas
+ */
 $(document).ready(function () {
     responsive();
     axios({
@@ -21,6 +25,76 @@ $(document).ready(function () {
     });
 });
 
+/**
+ * Shopping Cart Component
+ */
+var cart = new Vue({
+    el: '#cart',
+    data: {
+        items: [],
+        type: 'seat'
+    },
+    computed: {
+        total: function() {
+            var total = 0;
+            for (var i = 0; i < this.items.length; i++) {
+                total += this.items[i].price;
+            }
+            return total;
+        },
+        itemCount: function() {
+             return this.items.length;
+        },
+        showCart: function () {
+            var showCart = false;
+            if (this.items.length > 0) {
+                showCart = true;
+            }
+            return showCart;
+        }
+    },
+    methods: {
+        addToCart: function (item) {
+            this.items.push(item);
+        },
+        removeFromCart: function (item) {
+            item.setStroke('#3AA99E');
+            item.setFill('#3AA99E');
+            item.setStatus('AV');
+            canvas.renderAll();
+            this.items.splice(this.items.indexOf(item), 1);
+        },
+        sendCartData: function () {
+            axios({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'post',
+                url: '/add-to-cart',
+                data: {
+                    itemCount: this.itemCount,
+                    total: this.total,
+                    items: this.items
+                }
+            })
+                .then(function (response) {
+                    if (response.status === 200) {
+                        alert('Success!');
+                    }
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+        }
+    }
+});
+
+/**
+ * Event listener for the main canvas. Loads zones
+ *
+ * @param el
+ * @returns {boolean}
+ */
 function selected(el) {
     if (el.target.type == 'zone') {
         axios({
@@ -32,14 +106,33 @@ function selected(el) {
                 canvas.setZoom(canvas.getZoom() / 1.5);
                 canvas.loadFromJSON(response.data);
                 canvas.renderAll();
+
+                // Event listener for the seats canvas
+                canvas.on('mouse:down', function (el) {
+                    var seat = el.target;
+
+                    if (seat.status === 'AV') {
+                        seat.setStroke('#F96868');
+                        seat.setFill('#F96868');
+                        seat.setStatus('SL');
+                        cart.addToCart(seat);
+                        canvas.renderAll();
+                    } else if (seat.status === 'SL') {
+                        seat.setStroke('#3AA99E');
+                        seat.setFill('#3AA99E');
+                        seat.setStatus('AV');
+                        cart.removeFromCart(seat);
+                        canvas.renderAll();
+                    } else {
+                        return false;
+                    }
+                });
             })
             .catch(function (error) {
                 console.log(error);
             });
-    } else if (el.target.type == 'seat') {
-        // Add seat to shopping cart
-        // Temporarily block the seat
-        // Start 10min counter for the seat
+    } else{
+        return false;
     }
 }
 
@@ -56,6 +149,9 @@ function getZoneView(zone) {
         });
 }
 
+/**
+ * Responsive Canvas function. Will be modified.
+ */
 function responsive()
 {
     var w = document.getElementById("canvas-holder").offsetWidth;

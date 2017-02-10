@@ -20,13 +20,13 @@
         ]) !!};
     </script>
 
+    <link rel="stylesheet" href="{{ asset('fonts/7-stroke/7-stroke.min.css') }}">
     @yield('fonts')
 </head>
 <body class="app">
     @include('partials.navbar')
 
     @yield('content')
-
     <script src="{{ asset('js/global/jquery.min.js') }}"></script>
     <script src="{{ asset('js/global/bootstrap.min.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
