@@ -67,4 +67,24 @@ class Order extends Model
         // Create OrderItems
         OrderItem::createItems($data->items, $order->id);
     }
+
+    public static function updateOrder($data, $uuid)
+    {
+        $order = Order::where('unique_id', '=', $uuid)->first();
+        $order->updated_at = Carbon::now('Europe/Istanbul');
+        $order->save();
+
+        OrderItem::createItems($data->items, $order->id);
+    }
+
+    public static function checkIfExists($uuid)
+    {
+        $order = Order::where('unique_id', '=', $uuid)->get();
+
+        if (count($order)) {
+            return true;
+        }
+
+        return false;
+    }
 }

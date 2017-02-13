@@ -9,14 +9,27 @@ use Illuminate\Support\Facades\Cookie;
 class OrderController extends Controller
 {
     /**
-     * Add to Package
+     * Adds items to cart and redirects to the package.
      *
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function addToCart(Request $request)
     {
         $uuid = Cookie::get('uuid');
-        Order::createNewOrder($request, $uuid);
+
+        if (Order::checkIfExists($uuid)) {
+            Order::updateOrder($request, $uuid);
+        } else {
+            Order::createNewOrder($request, $uuid);
+        }
+        // Reserve the seats on JSON
+        // Add to Queue the package in order to clear it.
+        return response()
+                    ->json([
+                        'redirect' => '/package/' . $uuid
+                    ])
+                    ->cookie('uuid', $uuid);
     }
 
     /**
