@@ -213,7 +213,7 @@ CART
     -webkit-transition: right 0.3s;
     -moz-transition: right 0.3s;
     transition: right 0.3s;
-    box-shadow: -2px 2px 1px 0px rgba(0,0,0,0.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #cart.speed-in {
@@ -224,6 +224,9 @@ CART
     height: 100%;
     z-index: 10;
     position: absolute;
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    transition: right 1s;
 }
 
 #cart > * {

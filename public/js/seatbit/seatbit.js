@@ -32,7 +32,7 @@ var cart = new Vue({
     el: '#cart',
     data: {
         items: [],
-        type: 'seat'
+        type: this.itemType
     },
     computed: {
         total: function() {
@@ -41,6 +41,9 @@ var cart = new Vue({
                 total += this.items[i].price;
             }
             return total;
+        },
+        itemType: function() {
+            return this.items[0].type;
         },
         itemCount: function() {
              return this.items.length;
@@ -78,12 +81,10 @@ var cart = new Vue({
                 }
             })
                 .then(function (response) {
-                    if (response.status === 200) {
-                        alert('Success!');
-                    }
+                    window.location.replace(response.data.redirect);
                 })
-                .catch(function (error) {
-                    alert(error);
+                .catch(function (response) {
+                    alert(response);
                 });
         }
     }

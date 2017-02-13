@@ -12,5 +12,5 @@
         <p>Total <span>@{{ total }}</span></p>
     </div>
 
-    <a href="{{ action('OrderController@showOrder', ['uuid' => $uuid]) }}" @click="sendCartData()" class="btn btn-success btn-block">CHECKOUT</a>
+    <a href="" @click="sendCartData()" class="btn btn-success btn-block">CHECKOUT</a>
 </div>
