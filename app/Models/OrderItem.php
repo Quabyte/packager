@@ -47,10 +47,17 @@ class OrderItem extends Model
     {
         foreach ($data as $itemData) {
             $item = new OrderItem();
-            $item->title = 'seat';
-            $item->quantity = 1;
-            $item->unit_price = 150;
-            $item->subtotal = 150;
+            $item->type = $itemData['type'];
+
+            if ($item->type === "seat") {
+                $item->quantity = 1;
+            } else {
+                $item->quantity = $itemData['quantity'];
+            }
+
+            $item->uuid = $itemData['uuid'];
+            $item->unit_price = $itemData['price'];
+            $item->subtotal = $itemData['price'] * $item->quantity;
             $item->order_id = $order;
             $item->created_at = Carbon::now('Europe/Istanbul');
             $item->updated_at = Carbon::now('Europe/Istanbul');

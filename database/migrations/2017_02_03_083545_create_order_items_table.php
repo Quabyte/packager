@@ -15,7 +15,8 @@ class CreateOrderItemsTable extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('type');
+            $table->string('uuid');
             $table->integer('quantity');
             $table->decimal('unit_price');
             $table->decimal('subtotal');

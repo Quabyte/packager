@@ -9,7 +9,7 @@
     </ul>
 
     <div class="cart-total">
-        <p>Total <span>@{{ total }}</span></p>
+        <p>Total <span>@{{ itemCount }}</span> @{{ total }}</p>
     </div>
 
     <a href="" @click="sendCartData()" class="btn btn-success btn-block">CHECKOUT</a>

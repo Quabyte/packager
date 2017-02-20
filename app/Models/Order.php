@@ -58,7 +58,7 @@ class Order extends Model
         $order = new Order();
         $order->unique_id = $uuid;
         $order->status = 'not-completed';
-        $order->total = 100;
+        $order->total = $data->total;
         $order->currency = 949;
         $order->created_at = Carbon::now('Europe/Istanbul');
         $order->updated_at = Carbon::now('Europe/Istanbul');
@@ -71,10 +71,12 @@ class Order extends Model
     public static function updateOrder($data, $uuid)
     {
         $order = Order::where('unique_id', '=', $uuid)->first();
-        $order->updated_at = Carbon::now('Europe/Istanbul');
-        $order->save();
 
         OrderItem::createItems($data->items, $order->id);
+
+        $order->total = Order::calculateOrderTotal($order->id);
+        $order->updated_at = Carbon::now('Europe/Istanbul');
+        $order->save();
     }
 
     public static function checkIfExists($uuid)
@@ -86,5 +88,27 @@ class Order extends Model
         }
 
         return false;
+    }
+
+    public static function calculateOrderTotal($orderID)
+    {
+        $orderItems = OrderItem::where('order_id', '=', $orderID)->get();
+
+        $total = 0;
+        foreach ($orderItems as $orderItem) {
+            $total += $orderItem->subtotal;
+        }
+
+        return $total;
+    }
+
+    public static function listSeats($orderID)
+    {
+        $seats = OrderItem::where([
+            ['type', '=', 'seat'],
+            ['order_id', '=', $orderID]
+        ])->get();
+
+        return $seats;
     }
 }
