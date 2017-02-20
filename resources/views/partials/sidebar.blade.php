@@ -20,7 +20,7 @@
             @foreach($categories as $category)
 
                 {{-- Check if the price category has more than one zone --}}
-                @if(App\Models\SeatCategory::checkMultipleZones($category->id))
+                @if(App\Models\PriceCategory::checkMultipleZones($category->id))
                     <div class="singleCategory" data-toggle="collapse" data-target="#{{ $category->id }}" aria-expanded="false" aria-controls="{{ $category->name }}">
                         <span class="categoryColor" style="background: #{{ $category->color }}"></span>
                         <div class="categoryInfo">
@@ -35,7 +35,7 @@
                     <div class="collapse" id="{{ $category->id }}" style="padding-left: 25px;">
 
                         {{-- List the zones --}}
-                        @foreach(App\Models\SeatCategory::getZones($category->id) as $zone)
+                        @foreach(App\Models\PriceCategory::getZones($category->id) as $zone)
                             <div class="singleCategory" onclick="getZoneView({!! $zone !!})">
                                 <span class="categoryColor" style="background: #{{ $category->color }}"></span>
                                 <div class="categoryInfo">

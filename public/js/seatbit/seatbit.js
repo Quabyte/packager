@@ -37,7 +37,7 @@ var cart = new Vue({
     computed: {
         total: function() {
             var total = 0;
-            for (var i = 0; i < this.items.length; i++) {
+            for(var i = 0; i < this.items.length; i++) {
                 total += this.items[i].price;
             }
             return total;
