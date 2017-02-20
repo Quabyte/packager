@@ -23,13 +23,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/account';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -49,8 +42,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'surname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'address' => 'required|max:255',
+            'postal_code' => 'required',
+            'country' => 'required',
+            'telephone' => 'required',
+            'tc_id' => 'required|min:11',
         ]);
     }
 
@@ -64,8 +63,14 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'address' => $data['address'],
+            'postal_code' => $data['postal_code'],
+            'country' => $data['country'],
+            'telephone' => $data['telephone'],
+            'tc_id' => $data['tc_id'],
         ]);
     }
 }
