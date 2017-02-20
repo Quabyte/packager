@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand-custom" href="{{ url('/') }}">
-                <img src="{{ asset('images/detur-logo.png') }}" alt="" class="img-responsive" style="max-width: 80%;">
+                <img src="{{ asset('images/deturlogo.png') }}" alt="" class="img-responsive" style="max-width: 80%;">
             </a>
         </div>
 

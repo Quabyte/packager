@@ -1,7 +1,7 @@
 <div class="sidebar">
-    <div class="venueImage">
-        <img src="{{ asset('images/sinanErdem.jpg') }}" alt="" class="img-responsive">
-    </div>
+    {{--<div class="venueImage">--}}
+        {{--<img src="{{ asset('images/sinanErdem.jpg') }}" alt="" class="img-responsive">--}}
+    {{--</div>--}}
     <div class="priceList">
         <div class="infoText">
             <h4>Price Categories</h4>

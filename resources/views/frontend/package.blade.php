@@ -10,6 +10,8 @@
 
 @section('title', 'Your Package')
 
+@section('bodyClass', 'app')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('fonts/7-stroke/7-stroke.min.css') }}">
     @yield('fonts')
 </head>
-<body class="app">
+<body class="@yield('bodyClass')">
     @include('partials.navbar')
 
     @yield('content')

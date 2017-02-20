@@ -1,5 +1,4 @@
 var canvas = new fabric.Canvas('c', {
-    backgroundColor: '#eeeeee',
     selection: false
 });
 
@@ -169,7 +168,6 @@ function responsive()
     canvas.setWidth(w);
     canvas.setHeight(h);
     canvas.forEachObject(function (zone) {
-
         for (var i = 0; i < zone.points.length; i++) {
             zone.points[i].x = Math.round(zone.points[i].x * wRatio);
             zone.points[i].y = Math.round(zone.points[i].y * wRatio);
