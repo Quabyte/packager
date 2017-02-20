@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeatCategoriesTable extends Migration
+class CreatePriceCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSeatCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('seat_categories', function (Blueprint $table) {
+        Schema::create('price_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('color')->nullable();
@@ -32,6 +32,6 @@ class CreateSeatCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('seat_categories');
+        Schema::drop('price_categories');
     }
 }

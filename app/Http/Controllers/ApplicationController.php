@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SeatCategory;
 use App\SeatByte\Utilities;
 use Illuminate\Http\Request;
+use App\Models\PriceCategory;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
     public function index()
     {
-        $categories = SeatCategory::where('online', '=', true)->get();
+        $categories = PriceCategory::where('online', '=', true)->get();
         $uuid = Utilities::setUniqueCookie();
 
         return view('frontend.home', compact('categories', 'uuid'));

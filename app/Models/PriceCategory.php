@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SeatCategory extends Model
+class PriceCategory extends Model
 {
-    protected $table = 'seat_categories';
+    protected $table = 'price_categories';
 
     protected $fillable = [
         'name',
@@ -16,9 +16,14 @@ class SeatCategory extends Model
         'online'
     ];
 
+    public function seats()
+    {
+        return $this->hasMany('App\Models\Seat');
+    }
+
     public static function checkMultipleZones($categoryID)
     {
-        $category = SeatCategory::findOrFail($categoryID);
+        $category = PriceCategory::findOrFail($categoryID);
 
         $zones = explode('.', $category->zones);
 
@@ -31,7 +36,7 @@ class SeatCategory extends Model
 
     public static function getZones($categoryID)
     {
-        $category = SeatCategory::findOrFail($categoryID);
+        $category = PriceCategory::findOrFail($categoryID);
 
         $zones = explode('.', $category->zones);
 
