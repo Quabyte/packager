@@ -22,6 +22,7 @@ class CreateHotelRoomsTable extends Migration
             $table->string('name');
             $table->decimal('price');
             $table->integer('type');
+            $table->integer('availability');
             $table->timestamps();
         });
     }

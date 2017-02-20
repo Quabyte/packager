@@ -11,17 +11,17 @@ class HotelsTableSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('hotels')->insert([
-//            'id' => 1,
-//            'unique_identifier' => rand(0, 5),
-//            'name' => 'Swissotel The Bosphorus Istanbul',
-//            'media_path' => 'swiss',
-//            'stars' => 5,
-//            'review_point' => 9,
-//            'review_count' => 2914,
-//            'location' => 'Macka/Besiktas',
-//            'description' => 'Lorem ipsum dolor'
-//        ]);
+        DB::table('hotels')->insert([
+            'id' => 1,
+            'unique_identifier' => rand(0, 5),
+            'name' => 'Swissotel The Bosphorus Istanbul',
+            'media_path' => 'swiss',
+            'stars' => 5,
+            'review_point' => 9,
+            'review_count' => 2914,
+            'location' => 'Macka/Besiktas',
+            'description' => 'Lorem ipsum dolor'
+        ]);
 
         DB::table('hotels')->insert([
             'id' => 2,

@@ -19,4 +19,14 @@ class HotelRoom extends Model
     {
         return $this->belongsTo('App\Models\Hotel');
     }
+
+    public static function createNewRoom($data, $hotelID)
+    {
+        $room = new HotelRoom();
+        $room->hotel_id = $hotelID;
+        $room->name = $data->roomName;
+        $room->price = $data->roomPrice;
+        $room->type = $data->roomType;
+        $room->save();
+    }
 }
