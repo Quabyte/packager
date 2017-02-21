@@ -11,6 +11,7 @@ Route::get('/get-data/{fileName}', 'ApplicationController@getData');
  * Order and Package
  */
 Route::post('/add-to-cart', 'OrderController@addToCart');
+Route::post('/add-hotel', 'OrderController@addHotelToCart');
 Route::get('/package/{uuid}', 'OrderController@showOrder');
 
 /**

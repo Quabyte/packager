@@ -36,8 +36,9 @@
                             @endforeach
                         </div>
                         <div class="col-md-12">
-                            @foreach(\App\Models\Hotel::all() as $hotel)
-                                <p>{{ $hotel->name }}</p>
+                            @foreach(\App\Models\Hotel::listHotels($order->id) as $hotel)
+                                <p>{{ $hotel->uuid }}</p>
+                                <p>{{ $hotel->subtotal }}</p>
                             @endforeach
                         </div>
                         <div class="col-md-12">

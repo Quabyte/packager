@@ -1,5 +1,5 @@
 .app {
-    padding-top: 62px;
+    padding-top: 60px;
     background: #fff;
     color: #768395;
 }
@@ -45,8 +45,8 @@ NAVBAR
 }
 
 .navbar-nav>li>a {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 21px;
+    padding-bottom: 21px;
     color: #57c7d4;
 }
 
@@ -57,8 +57,8 @@ NAVBAR
 }
 
 .custom-navbar-a {
-    padding-top: 14px !important;
-    padding-bottom: 13px !important;
+    padding-top: 15px !important;
+    padding-bottom: 14px !important;
     background-color: #62a8ea !important;
     color: #fff !important;
 }
@@ -89,6 +89,19 @@ NAVBAR
 .navbar-text > a:hover {
     color: #fff;
     text-decoration: none;
+}
+
+.event-information {
+    float: left;
+    position: relative;
+    padding: 14px 0 11px 12px;
+    cursor: pointer;
+}
+
+.event-title {
+    font-size: 16px;
+    color: white;
+    margin: 0;
 }
 
 /**
@@ -162,20 +175,6 @@ SIDEBAR
 /**
 CONTENT
 **/
-.informationBand {
-    background: #fff;
-    color: #333;
-    box-shadow: 2px 0 10px rgba(0,0,0,.1), 1px 0 0 rgba(0,0,0,.05);
-    min-height: 30px;
-    padding: 5px;
-}
-
-.bandTitle {
-    color: #37474f;
-    margin-top: 10px;
-    font-weight: 400;
-}
-
 .reviews {
     padding: 10px 15px 0 15px;
 }

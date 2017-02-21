@@ -111,4 +111,15 @@ class Order extends Model
 
         return $seats;
     }
+
+    public static function updateWithHotelOrder($uuid, $request)
+    {
+        OrderItem::createHotelItems($uuid, $request);
+
+        $order = Order::where('unique_id', '=', $uuid)->first();
+
+        $order->total = Order::calculateOrderTotal($order->id);
+        $order->updated_at = Carbon::now('Europe/Istanbul');
+        $order->save();
+    }
 }

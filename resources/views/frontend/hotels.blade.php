@@ -107,7 +107,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-success btn-block">
+                                <a href="#" class="btn btn-primary btn-block">
                                     <i class="icon md-book"></i> Book Now
                                 </a>
                             </div>

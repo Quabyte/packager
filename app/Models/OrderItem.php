@@ -64,4 +64,29 @@ class OrderItem extends Model
             $item->save();
         }
     }
+
+    public static function createHotelItems($uuid, $request)
+    {
+        $order = Order::where('unique_id', '=', $uuid)->first();
+
+        $hotel = Hotel::where('unique_identifier', '=', $request->uuid)->first();
+
+        $hotelRoom = HotelRoom::where([
+            ['hotel_id', '=', $hotel->id],
+            ['type', '=', $request->roomType]
+        ])->first();
+
+        $calculatedPrice = Hotel::calculateStay($request->checkIn, $request->checkOut, $hotelRoom->price);
+
+        $item = new OrderItem();
+        $item->type = 'hotel';
+        $item->uuid = $request->uuid;
+        $item->quantity = $request->quantity;
+        $item->unit_price = $calculatedPrice;
+        $item->subtotal = $calculatedPrice * $request->quantity;
+        $item->order_id = $order->id;
+        $item->created_at = Carbon::now('Europe/Istanbul');
+        $item->updated_at = Carbon::now('Europe/Istanbul');
+        $item->save();
+    }
 }

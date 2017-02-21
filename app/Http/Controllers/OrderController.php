@@ -32,6 +32,19 @@ class OrderController extends Controller
                     ->cookie('uuid', $uuid);
     }
 
+    public function addHotelToCart(Request $request)
+    {
+        $uuid = Cookie::get('uuid');
+
+        if (Order::checkIfExists($uuid)) {
+            Order::updateWithHotelOrder($uuid, $request);
+        } else {
+            return redirect()->action('ApplicationController@index');
+        }
+
+        return redirect()->to('/package/' . $uuid);
+    }
+
     /**
      * Gets the specified order with items
      *

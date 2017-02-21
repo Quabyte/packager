@@ -50,50 +50,66 @@
                         </div>
                     </div>
 
-                    {{-- Accomodation Info --}}
-                    <div class="row mt-10">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select name="date" class="form-control">
-                                    <option value="1">Check In</option>
-                                    <option value="2">18 May</option>
-                                    <option value="3">19 May</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select name="check" class="form-control">
-                                    <option value="1">Check Out</option>
-                                    <option value="2">18 May</option>
-                                    <option value="3">19 May</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select name="type" class="form-control">
-                                    <option value="1">Room Type</option>
-                                    <option value="2">18 May</option>
-                                    <option value="3">19 May</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- End Accomodation Info --}}
+                    <form action="{{ action('OrderController@addHotelToCart') }}" method="POST">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-default">
-                                <i class="icon md-info-outline"></i> More Info
-                            </a>
+                        {{ csrf_field() }}
+                        {{-- Accomodation Info --}}
+                        <div class="row mt-10">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select name="checkIn" class="form-control">
+                                        <option value="">Check In</option>
+                                        <option value="18">18 May</option>
+                                        <option value="19">19 May</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select name="checkOut" class="form-control">
+                                        <option value="">Check Out</option>
+                                        <option value="21">21 May</option>
+                                        <option value="22">22 May</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select name="roomType" class="form-control">
+                                        <option value="">Room Type</option>
+                                        <option value="1">Single Room</option>
+                                        <option value="2">Double Room</option>
+                                        <option value="3">Triple Room</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <select name="quantity" class="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-success btn-block">
-                                <i class="icon md-book"></i> Book Now
-                            </a>
+                        {{-- End Accomodation Info --}}
+                        <input type="hidden" value="{{ $hotel->unique_identifier }}" name="uuid">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="#" class="btn btn-default">
+                                    <i class="icon md-info-outline"></i> More Info
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-block btn-primary">
+                                    <i class="icon md-book"></i> Book Now
+                                </button>
+                            </div>
                         </div>
-                    </div>
+
+                    </form>
                 </div>
                 {{-- End Panel Body --}}
             </div>
