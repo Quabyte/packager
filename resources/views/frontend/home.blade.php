@@ -7,6 +7,7 @@
         <div class="row">
             @include('partials.sidebar')
             <div class="canvasWrapper" id="canvas-holder">
+                @include('partials.canvasui')
                 <canvas id="c"></canvas>
             </div>
             @include('partials.cart')
@@ -20,5 +21,6 @@
     <script src="{{ asset('js/seatbit/zone.js') }}"></script>
     <script src="{{ asset('js/seatbit/seat.js') }}"></script>
     <script src="{{ asset('js/seatbit/seatbit.js') }}"></script>
+    <script src="{{ asset('js/seatbit/zoomandpan.js') }}"></script>
     {{--    <script src="{{ asset('js/seatbit/responsive.js') }}"></script>--}}
 @stop
