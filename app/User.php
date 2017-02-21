@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'surname',
+        'email',
+        'password',
+        'address',
+        'postal_code',
+        'country',
+        'telephone',
+        'tc_id'
     ];
 
     /**
@@ -26,4 +35,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        if (Auth::user()->isAdmin)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

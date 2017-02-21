@@ -21,4 +21,19 @@ class Hotel extends Model
     {
         return $this->hasMany('App\Models\HotelRoom');
     }
+
+    public static function calculateStay($checkIn, $checkOut, $price)
+    {
+        return $total = ($checkOut - $checkIn) * $price;
+    }
+
+    public static function listHotels($orderID)
+    {
+        $hotels = OrderItem::where([
+            ['type', '=', 'hotel'],
+            ['order_id', '=', $orderID]
+        ])->get();
+
+        return $hotels;
+    }
 }

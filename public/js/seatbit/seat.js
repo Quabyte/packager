@@ -22,6 +22,9 @@ fabric.Seat = new fabric.util.createClass(fabric.Circle, {
         this.set('status', options.status || 'IA');
         this.set('zoneNumber', options.zoneNumber || 'Zone number not set!');
         this.set('price', options.price || 'Price not set!');
+        this.set('uuid', options.uuid || '');
+        this.set('categoryColor', options.categoryColor || '#000000');
+        this.set('categoryID', options.categoryID || 0);
 
         // Defaults
         this.set('fill', options.fill || '#fff');
@@ -62,6 +65,9 @@ fabric.Seat = new fabric.util.createClass(fabric.Circle, {
             status: this.get('status'),
             zoneNumber: this.get('zoneNumber'),
             price: this.get('price'),
+            categoryID: this.get('categoryID'),
+            categoryColor: this.get('categoryColor'),
+            uuid: this.get('uuid'),
         });
     },
 

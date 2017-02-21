@@ -1,91 +1,69 @@
 <div class="sidebar">
-    <div class="venueImage">
-        <img src="{{ asset('images/sinanErdem.jpg') }}" alt="" class="img-responsive">
-    </div>
+    {{--<div class="venueImage">--}}
+        {{--<img src="{{ asset('images/sinanErdem.jpg') }}" alt="" class="img-responsive">--}}
+    {{--</div>--}}
     <div class="priceList">
         <div class="infoText">
             <h4>Price Categories</h4>
         </div>
         <div class="categories">
             <div class="singleCategory">
-                <span class="categoryColor" style="background: #eaac0f;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 2</p>
-                    <span class="ticketCount">52 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">350 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #6dc136;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 3</p>
-                    <span class="ticketCount">128 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">275 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #1a8be8;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 4</p>
-                    <span class="ticketCount">128 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">250 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #02a0bc;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 5</p>
-                    <span class="ticketCount">128 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">225 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #855eea;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 8</p>
-                    <span class="ticketCount">128 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">200 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #1759aa;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Price List 10</p>
-                    <span class="ticketCount">128 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">175 €</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #f58c2a;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Gold Hospitality</p>
-                    <span class="ticketCount">58 Available</span>
-                </div>
-                <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">More Info</a>
-                </div>
-            </div>
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #f44545;"></span>
+                <span class="categoryColor" style="background: #F96868;"></span>
                 <div class="categoryInfo">
                     <p class="categoryName">Suites</p>
                 </div>
                 <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-primary">More Info</a>
+                    <a href="{{ asset('misc/VIP.pdf') }}" target="_blank" class="btn btn-block btn-default">More Info</a>
                 </div>
             </div>
+
+            @foreach($categories as $category)
+
+                {{-- Check if the price category has more than one zone --}}
+                @if(App\Models\PriceCategory::checkMultipleZones($category->id))
+                    <div class="singleCategory" data-toggle="collapse" data-target="#{{ $category->id }}" aria-expanded="false" aria-controls="{{ $category->name }}">
+                        <span class="categoryColor" style="background: #{{ $category->color }}"></span>
+                        <div class="categoryInfo">
+                            <p class="categoryName">{{ $category->name }}</p>
+                            <span class="ticketCount">Available {{ $category->available }}</span>
+                        </div>
+                        <div class="categoryPrice">
+                            <a href="#" class="btn btn-block btn-default">{{ $category->price }} €</a>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="{{ $category->id }}" style="padding-left: 25px;">
+
+                        {{-- List the zones --}}
+                        @foreach(App\Models\PriceCategory::getZones($category->id) as $zone)
+                            <div class="singleCategory" onclick="getZoneView({!! $zone !!})">
+                                <span class="categoryColor" style="background: #{{ $category->color }}"></span>
+                                <div class="categoryInfo">
+                                    <p class="categoryName">{{ $zone }}</p>
+                                    <span class="ticketCount">Available {{ $category->available }}</span>
+                                </div>
+                                <div class="categoryPrice">
+                                    <a href="#" class="btn btn-block btn-xs btn-default">{{ $category->price }} €</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                {{-- If the price category has one zone --}}
+                @else
+                    <div class="singleCategory" onclick="getZoneView({!! $category->zones !!})">
+                        <span class="categoryColor" style="background: #{{ $category->color }}"></span>
+                        <div class="categoryInfo">
+                            <p class="categoryName">{{ $category->name }}</p>
+                            <span class="ticketCount">Available {{ $category->available }}</span>
+                        </div>
+                        <div class="categoryPrice">
+                            <a href="#" class="btn btn-block btn-default">{{ $category->price }} €</a>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+
         </div>
     </div>
 </div>

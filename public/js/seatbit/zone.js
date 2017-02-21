@@ -53,17 +53,17 @@ fabric.Zone = new fabric.util.createClass(fabric.Polygon, {
         });
     },
 
-    /**
-     * Canvas renderer
-     */
-    _render: function (ctx) {
-        this.callSuper('_render', ctx);
+    // /**
+    //  * Canvas renderer
+    //  */
+    // _render: function (ctx) {
+    //     this.callSuper('_render', ctx);
 
-        ctx.font = '10px Helvetica';
-        ctx.fillStyle = '#fff';
-        ctx.fillText(this.number, -(this.width / 2) + 15, 0, [15]);
-        ctx.textAlign = 'center';
-    }
+    //     ctx.font = '10px Helvetica';
+    //     ctx.fillStyle = '#fff';
+    //     ctx.fillText(this.number, -(this.width / 2) + 15, 0, [15]);
+    //     ctx.textAlign = 'center';
+    // }
 });
 
 fabric.Zone.fromObject = function (object, callback, forceAsync) {
