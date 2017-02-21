@@ -13,16 +13,15 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Dovakhin',
+            'surname' => 'Otacıoglu',
+            'address' => 'none',
+            'postal_code' => '14100',
+            'country' => 'Turkey',
+            'telephone' => '5315718209',
+            'tc_id' => '00000000000',
             'email' => 'orcun.otacioglu@acikgise.com',
             'password' => bcrypt('CPGKhrs7V'),
             'isAdmin' => true
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Oytun',
-            'email' => 'oytun.otaci@hotmail.com',
-            'password' => bcrypt('password'),
-            'isAdmin' => false
         ]);
     }
 }

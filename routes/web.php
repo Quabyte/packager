@@ -20,6 +20,11 @@ Route::get('/package/{uuid}', 'OrderController@showOrder');
 Route::resource('hotels', 'HotelController');
 
 /**
+ * Seat Related
+ */
+Route::get('/seat-data/{uuid}', 'SeatController@getSeatData');
+
+/**
  * Authentication
  */
 Auth::routes();
@@ -27,6 +32,7 @@ Auth::routes();
 Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'], function () {
     Route::get('/', 'DashboardController@index');
     Route::resource('/price-category', 'PriceCategoryController');
+    Route::resource('/seat-map', 'SeatController', ['except' => ['getSeatData']]);
     Route::get('/hotels', 'HotelController@showAll');
     Route::post('/hotels/{id}/edit/add-room', 'HotelController@addRoom');
 });
