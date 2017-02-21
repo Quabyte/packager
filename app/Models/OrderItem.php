@@ -65,6 +65,12 @@ class OrderItem extends Model
         }
     }
 
+    /**
+     * Creates Hotel OrderItems
+     *
+     * @param $uuid
+     * @param $request
+     */
     public static function createHotelItems($uuid, $request)
     {
         $order = Order::where('unique_id', '=', $uuid)->first();

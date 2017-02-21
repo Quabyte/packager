@@ -68,6 +68,12 @@ class Order extends Model
         OrderItem::createItems($data->items, $order->id);
     }
 
+    /**
+     * Update existing order
+     *
+     * @param $data
+     * @param $uuid
+     */
     public static function updateOrder($data, $uuid)
     {
         $order = Order::where('unique_id', '=', $uuid)->first();
@@ -79,6 +85,12 @@ class Order extends Model
         $order->save();
     }
 
+    /**
+     * Checks whether order exists
+     *
+     * @param $uuid
+     * @return bool
+     */
     public static function checkIfExists($uuid)
     {
         $order = Order::where('unique_id', '=', $uuid)->get();
@@ -90,6 +102,12 @@ class Order extends Model
         return false;
     }
 
+    /**
+     * Calculates Order total
+     *
+     * @param $orderID
+     * @return int
+     */
     public static function calculateOrderTotal($orderID)
     {
         $orderItems = OrderItem::where('order_id', '=', $orderID)->get();
@@ -102,6 +120,12 @@ class Order extends Model
         return $total;
     }
 
+    /**
+     * Lists seats in the Order.
+     *
+     * @param $orderID
+     * @return mixed
+     */
     public static function listSeats($orderID)
     {
         $seats = OrderItem::where([
@@ -112,6 +136,12 @@ class Order extends Model
         return $seats;
     }
 
+    /**
+     * Adds hotel to Order.
+     *
+     * @param $uuid
+     * @param $request
+     */
     public static function updateWithHotelOrder($uuid, $request)
     {
         OrderItem::createHotelItems($uuid, $request);
@@ -119,6 +149,7 @@ class Order extends Model
         $order = Order::where('unique_id', '=', $uuid)->first();
 
         $order->total = Order::calculateOrderTotal($order->id);
+        $order->status = 'added-hotel';
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();
     }
