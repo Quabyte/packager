@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Jobs\BookSeats;
+use App\Jobs\ReleaseSeats;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,6 +52,10 @@ class OrderItem extends Model
             $item->type = $itemData['type'];
 
             if ($item->type === "seat") {
+                $seat = Seat::where('uuid', '=', $itemData['uuid'])->first();
+                $seat->order_id = $order;
+                $seat->updated_at = Carbon::now('Europe/Istanbul');
+                $seat->save();
                 $item->quantity = 1;
             } else {
                 $item->quantity = $itemData['quantity'];
