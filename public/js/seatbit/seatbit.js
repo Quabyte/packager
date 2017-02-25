@@ -1,28 +1,34 @@
 var canvas = new fabric.Canvas('c', {
     selection: false
 });
-
+var venueJSON;
 /**
  * Loads the main zone view canvas
  */
 $(document).ready(function () {
     responsive();
+    loadVenue();
+});
+
+function loadVenue()
+{
     axios({
         method: 'get',
         url: '/load-venue'
     })
         .then(function (response) {
+            venueJSON = response;
             canvas.loadFromJSON(response.data);
             canvas.renderAll();
         })
         .catch(function (response) {
-           console.log(response)
+            console.log(response)
         });
 
     canvas.on('object:selected', function(el) {
         selected(el);
     });
-});
+}
 
 /**
  * Shopping Cart Component

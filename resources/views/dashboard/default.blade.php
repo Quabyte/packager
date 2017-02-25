@@ -20,6 +20,7 @@
 
     <script src="{{ asset('js/global/jquery.min.js') }}"></script>
     <script src="{{ asset('js/global/bootstrap.min.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     @yield('footer.js')
 </body>
 </html>

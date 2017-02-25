@@ -16,7 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('price_categories')->onDelete('cascade');
 
             $table->integer('order_id')->unsigned()->nullable();

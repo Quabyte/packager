@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Jobs\BookSeats;
+use App\Jobs\ReleaseSeats;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,12 +51,9 @@ class OrderItem extends Model
             $item = new OrderItem();
             $item->type = $itemData['type'];
 
-            if ($item->type === "seat") {
-                $item->quantity = 1;
-            } else {
-                $item->quantity = $itemData['quantity'];
-            }
+            Seat::bookParticularSeatOnDatabase($itemData['uuid'], $order);
 
+            $item->quantity = 1;
             $item->uuid = $itemData['uuid'];
             $item->unit_price = $itemData['price'];
             $item->subtotal = $itemData['price'] * $item->quantity;
@@ -65,6 +64,12 @@ class OrderItem extends Model
         }
     }
 
+    /**
+     * Creates Hotel OrderItems
+     *
+     * @param $uuid
+     * @param $request
+     */
     public static function createHotelItems($uuid, $request)
     {
         $order = Order::where('unique_id', '=', $uuid)->first();

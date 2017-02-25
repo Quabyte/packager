@@ -56,7 +56,7 @@
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-md-12">
                         @foreach(\App\Models\PriceCategory::getZones($category->id) as $zone)
-                            <a href="#" class="btn btn-default btn-xs">View Zone {{ $zone }}</a>
+                            <a href="{{ action('SeatController@show', ['zone' => $zone]) }}" class="btn btn-default btn-xs">View Zone {{ $zone }}</a>
                         @endforeach
                     </div>
                 </div>
