@@ -1,0 +1,294 @@
+.app {
+    padding-top: 60px;
+    background: #fff;
+    color: #768395;
+}
+
+/**
+CANVAS
+**/
+.canvasWrapper {
+    width: 75%;
+    height: 100%;
+    margin-left: 25%;
+    position: absolute;
+    padding: 0;
+    float: left;
+}
+
+canvas {
+    position: relative;
+}
+
+/**
+NAVBAR
+**/
+.navbar-custom {
+    background-color: #333;
+    min-height: 60px;
+    border: none;
+}
+
+.navbar-toggle {
+    border: 1px solid #fff;
+    padding: 13px 10px;
+}
+
+.navbar-brand-custom {
+    float: left;
+    height: 60px;
+    padding: 10px 5px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #57c7d4 !important;
+    text-decoration: none !important;
+}
+
+.navbar-nav>li>a {
+    padding-top: 21px;
+    padding-bottom: 21px;
+    color: #57c7d4;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #57c7d4;
+    color: #fff;
+}
+
+.custom-navbar-a {
+    padding-top: 15px !important;
+    padding-bottom: 14px !important;
+    background-color: #62a8ea !important;
+    color: #fff !important;
+}
+
+.navbar-text {
+    padding: 10px;
+    background: #F96868;
+    border: 1px solid #F96868;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.navbar-text:hover {
+    background: #E9595B;
+    border: 1px solid #E9595B;
+    cursor: pointer;
+}
+
+.navbar-text > a {
+    color: #fff;
+}
+
+.navbar-text:hover > a {
+    color: #fff;
+}
+
+.navbar-text > a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.event-information {
+    float: left;
+    position: relative;
+    padding: 14px 0 11px 12px;
+    cursor: pointer;
+}
+
+.event-title {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+}
+
+/**
+SIDEBAR
+**/
+.sidebar {
+    width: 25%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    float: left;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,.1), 1px 0 0 rgba(0,0,0,.05);
+}
+
+.infoText {
+    padding: 15px;
+    border-bottom: 1px solid #e4eaec;
+}
+
+.categories {
+    overflow: auto;
+}
+
+.singleCategory {
+    align-items: center;
+    border-bottom: 1px solid #e4eaec;
+    display: flex;
+    font-size: 16px;
+    height: 66px;
+    line-height: 16px;
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
+.singleCategory:hover {
+    background: rgba(228, 234, 236, 0.5);
+    cursor: pointer;
+}
+
+.singleCategory:last-of-type {
+    border-bottom: none;
+}
+
+.categoryColor {
+    width: 10%;
+    height: 46px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+.categoryInfo {
+    width: 75%;
+}
+
+.categoryName {
+    margin: 0;
+}
+
+.categoryPrice {
+    width: 35%;
+}
+
+.ticketCount {
+    color: #7a7a7a;
+    font-size: 13px;
+}
+
+/**
+CONTENT
+**/
+.reviews {
+    padding: 10px 15px 0 15px;
+}
+
+.hotel-point {
+    background: #62a8ea;
+    color: #fff;
+    padding: 10px;
+}
+
+/**
+BUTTONS
+**/
+.btn-default {
+    background: #e4eaec;
+    border-color: #e4eaec;
+    color: #76838f;
+}
+
+.btn-default:hover {
+    background: #ccd5db;
+    border-color: #ccd5db;
+    color: #76838f;
+}
+
+/**
+UTILITIES
+**/
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.small-font {
+    font-size: 12px;
+    color: #a3afb7;
+}
+
+/**
+CART
+**/
+#cart {
+    right: -100%;
+    background: #fff;
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    transition: right 0.3s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#cart.speed-in {
+    right: 0;
+    width: 25%;
+    float: right;
+    top: 60px;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    transition: right 1s;
+}
+
+#cart > * {
+    padding: 0;
+}
+
+.items-holder {
+    width: 100%;
+    background: #fff;
+    padding: 0 1em;
+    top: 60% !important;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+#cart .cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart .cart-items li {
+    position: relative;
+    padding: 1em;
+    border-top: 1px solid #e0e6ef;
+}
+
+#cart .cart-items li:last-child {
+    border-bottom: 1px solid #e0e6ef;
+}
+
+#cart .cart-price {
+    color: #a5aebc;
+}
+
+.item-title > h2 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 1em;
+}
+
+#three-d {
+    width: 100%;
+    height: 150px;
+    min-height: 150px;
+    margin: 0;
+    padding: 0;
+    background: #e4eaec;
+}
