@@ -7,15 +7,6 @@
             <h4>Price Categories</h4>
         </div>
         <div class="categories">
-            <div class="singleCategory">
-                <span class="categoryColor" style="background: #F96868;"></span>
-                <div class="categoryInfo">
-                    <p class="categoryName">Suites</p>
-                </div>
-                <div class="categoryPrice">
-                    <a href="{{ asset('misc/VIP.pdf') }}" target="_blank" class="btn btn-block btn-default">More Info</a>
-                </div>
-            </div>
 
             @foreach($categories as $category)
 
@@ -63,7 +54,15 @@
                     </div>
                 @endif
             @endforeach
-
+                <div class="singleCategory">
+                    <span class="categoryColor" style="background: #F96868;"></span>
+                    <div class="categoryInfo">
+                        <p class="categoryName">VIP Packages</p>
+                    </div>
+                    <div class="categoryPrice">
+                        <a href="{{ asset('misc/VIP.pdf') }}" target="_blank" class="btn btn-block btn-default">More Info</a>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

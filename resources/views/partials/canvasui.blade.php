@@ -5,4 +5,8 @@
     <button id="goLeft"><</button>
     <button id="zoomIn">+</button>
     <button id="zoomOut">-</button>
+
+    <div id="zoneMap">
+
+    </div>
 </div>

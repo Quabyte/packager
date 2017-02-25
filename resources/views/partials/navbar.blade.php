@@ -15,16 +15,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="event-information">
-                <div class="event-title-container">
-                    <h1 class="event-title">
-                        2017 Turkish Airlines EuroLeague Final Four İstanbul
-                    </h1>
-                    <span class="event-info">
-                        Sinan Erdem Arena - 19th May to 21th May 2017
-                    </span>
-                </div>
-            </div>
             <ul class="nav navbar-nav">
                 @if(Auth::check() && Auth::user()->isAdmin())
                     <li>
@@ -64,11 +54,6 @@
                         </ul>
                     </li>
                 @endif
-                <li>
-                    <a href="#" class="custom-navbar-a">
-                        <i class="icon pe-3x pe-cart"></i>
-                    </a>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

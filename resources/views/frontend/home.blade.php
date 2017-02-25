@@ -3,7 +3,12 @@
 @section('bodyClass', 'app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="headerBanner">
+        <div class="overlayImage">
+            <h1>Turkish Airlines Final Four Package Sales</h1>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             @include('partials.sidebar')
             <div class="canvasWrapper" id="canvas-holder">
