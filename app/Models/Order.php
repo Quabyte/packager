@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Order extends Model
 {
@@ -128,10 +129,7 @@ class Order extends Model
      */
     public static function listSeats($orderID)
     {
-        $seats = OrderItem::where([
-            ['type', '=', 'seat'],
-            ['order_id', '=', $orderID]
-        ])->get();
+        $seats = Seat::where('order_id', '=', $orderID)->get();
 
         return $seats;
     }
@@ -153,4 +151,50 @@ class Order extends Model
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();
     }
+
+    public static function assignUserId($order)
+    {
+        $order->user_id = Auth::id();
+        $order->save();
+    }
+
+    public static function preparePayment($order)
+    {
+        $paymentDetails = [
+            'clientid' => '600697513',
+            'amount' => $order->total,
+            'oid' => $order->unique_id,
+            'okUrl' => '',
+            'failUrl' => '',
+            'islemtipi' => 'Auth',
+            'taksit' => '',
+            'rnd' => $order->unique_id,
+            'storetype' => '3d_pay_hosting',
+            'refreshtime' => '5',
+            'lang' => 'tr'
+        ];
+
+        $hash = static::prepareHash($paymentDetails);
+
+        $paymentDetails['hash'] = $hash;
+
+        return $paymentDetails;
+    }
+
+    protected static function prepareHash($paymentDetails)
+    {
+        $hashstr = $paymentDetails['clientid'] .
+                   $paymentDetails['oid'] .
+                   $paymentDetails['amount'] .
+                   $paymentDetails['okUrl'] .
+                   $paymentDetails['failUrl'] .
+                   $paymentDetails['islemtipi'] .
+                   $paymentDetails['taksit'] .
+                   $paymentDetails['rnd'] .
+                   'KUTU7513';
+
+        return $hash = base64_encode(pack('H*',sha1($hashstr)));
+    }
+
+    // @TODO CHECK WHETHER PAYMENT IS SUCCESSFULL
 }

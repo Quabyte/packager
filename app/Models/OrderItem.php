@@ -51,16 +51,9 @@ class OrderItem extends Model
             $item = new OrderItem();
             $item->type = $itemData['type'];
 
-            if ($item->type === "seat") {
-                $seat = Seat::where('uuid', '=', $itemData['uuid'])->first();
-                $seat->order_id = $order;
-                $seat->updated_at = Carbon::now('Europe/Istanbul');
-                $seat->save();
-                $item->quantity = 1;
-            } else {
-                $item->quantity = $itemData['quantity'];
-            }
+            Seat::bookParticularSeatOnDatabase($itemData['uuid'], $order);
 
+            $item->quantity = 1;
             $item->uuid = $itemData['uuid'];
             $item->unit_price = $itemData['price'];
             $item->subtotal = $itemData['price'] * $item->quantity;

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdateJsonView;
 use App\Models\PriceCategory;
+use App\Models\Seat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PriceCategoryController extends Controller
@@ -73,7 +76,19 @@ class PriceCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = PriceCategory::find($id);
+
+        $category->price = $request->price;
+        $category->available = $request->online;
+        $category->zones = $request->zones;
+        $category->updated_at = Carbon::now('Europe/Istanbul');
+        $category->save();
+
+        $seats = Seat::where('category_id', '=', $category->id);
+
+        dispatch(new UpdateJsonView($seats));
+
+        return redirect()->back();
     }
 
     /**
