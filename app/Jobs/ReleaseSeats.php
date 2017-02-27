@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Order;
 use App\Models\Seat;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -39,10 +40,12 @@ class ReleaseSeats implements ShouldQueue
 
         if ($order->status !== 'completed')
         {
+            $order->status = 'terminated';
+            $order->updated_at = Carbon::now('Europe/Istanbul');
+            $order->save();
+
             $seats = Seat::where('order_id', '=', $order->id)->get();
-
             Seat::releaseSeats($seats);
-
         }
     }
 }

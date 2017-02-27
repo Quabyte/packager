@@ -21,6 +21,7 @@
     </script>
 
     <link rel="stylesheet" href="{{ asset('fonts/7-stroke/7-stroke.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/material-design/material-design.min.css') }}">
     @yield('fonts')
 </head>
 <body class="@yield('bodyClass')">

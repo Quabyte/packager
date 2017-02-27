@@ -23,7 +23,7 @@ class Seat extends Model
 
     public function priceCategory()
     {
-        return $this->belongsTo('App\Models\PriceCategory', 'id', 'category_id');
+        return $this->belongsTo('App\Models\PriceCategory', 'category_id', 'id');
     }
 
     /**
@@ -74,6 +74,7 @@ class Seat extends Model
     {
         foreach ($seats as $seat)
         {
+            $seat->order_id = null;
             $seat->status = 'AV';
             $seat->updated_at = Carbon::now('Europe/Istanbul');
             $seat->save();

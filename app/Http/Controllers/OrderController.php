@@ -98,4 +98,17 @@ class OrderController extends Controller
             return redirect()->action('ApplicationController@index');
         }
     }
+
+    public function confirmation(Request $request)
+    {
+        if (!Order::confirmed($request)) {
+            $message = 'Your payment is not successfull! Please try again!';
+        } elseif (!Order::checkStillAvailable($request)) {
+            $message = 'Your selected seats are not available since you exceed 20 minutes of purchase time. We will refund your money back in 24 hours!';
+        } else {
+            $message = 'Your purchase is successfull!';
+        }
+
+        return view('frontend.confirmation', compact('message'));
+    }
 }

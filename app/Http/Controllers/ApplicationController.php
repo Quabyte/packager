@@ -31,4 +31,9 @@ class ApplicationController extends Controller
 
         return response($data);
     }
+
+    public function countdown()
+    {
+        return view('frontend.countdown');
+    }
 }
