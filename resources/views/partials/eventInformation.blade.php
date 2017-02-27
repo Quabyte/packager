@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{ asset('images/sinanErdem.jpg') }}" class="img-responsive">
+                <img src="{{ asset('images/optimized/sinanErdem-min.jpg') }}" class="img-responsive">
             </div>
             <br>
             <div class="col-md-12" style="margin-top: 15px;">

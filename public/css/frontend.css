@@ -31,7 +31,7 @@ NAVBAR
     height: 60px;
     position: relative;
     float: left;
-    left: 29%;
+    left: 30%;
     padding: 5px;
 }
 
@@ -271,13 +271,14 @@ CART
 
 #cart .cart-items {
     list-style-type: none;
-    padding: 0;
+    padding: 5px;
 }
 
-#cart .cart-items li {
+#cart .cart-items > li {
     position: relative;
     padding: 1em;
     border-top: 1px solid #e0e6ef;
+    border-radius: 5px;
 }
 
 #cart .cart-items li:last-child {
@@ -302,6 +303,13 @@ CART
     margin: 0;
     padding: 0;
     background: #e4eaec;
+}
+
+.cart-total {
+    background: #526069;
+    padding: 10px !important;
+    color: #e4eaec;
+    margin-bottom: 10px;
 }
 
 /**
@@ -404,7 +412,7 @@ CANVAS UI
 .headerBanner {
     width: 100%;
     height: 240px;
-    background: url('http://packager.dev/images/slide_4.jpg');
+    background: url('http://packager.dev/images/optimized/slide_4-min.jpg');
     background-size: cover;
     margin-top: -82px;
 }
@@ -446,4 +454,16 @@ ITEMS
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     color: #e4eaec;
+}
+
+/**
+POWERED BY ACIKGISE
+**/
+.poweredBy {
+    position: fixed;
+    top: 150px;
+    right: 15px;
+    -webkit-transition: -webkit-transform .24s cubic-bezier(0.645,.045,.355,1);
+    transition: transform .24s cubic-bezier(0.645,.045,.355,1);
+    z-index: 997;
 }

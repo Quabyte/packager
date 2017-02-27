@@ -141,7 +141,16 @@ function selected(el) {
         })
             .then(function (response) {
                 canvas.clear();
-                canvas.setZoom(canvas.getZoom());
+
+                if (el.target.number === 124) {
+                    canvas.setZoom(1 / 2);
+                } else if (el.target.number === 412) {
+                    canvas.setZoom(1 / 2);
+                } else if (el.target.number === 324) {
+                    canvas.setZoom(1 / 1.5);
+                }else {
+                    canvas.setZoom(1 / 1.2);
+                }
                 canvas.loadFromJSON(response.data);
                 var imageSource= 'http://packager.dev/images/zones/' + el.target.number + '.png';
                 $('#zoneMap').prepend('<a href="/"><img src="' + imageSource + '" class="img-responsive"/></a>');
@@ -184,7 +193,15 @@ function getZoneView(zone) {
     })
         .then(function (response) {
             canvas.clear();
-            canvas.setZoom(canvas.getZoom());
+            if (zone === 124) {
+                canvas.setZoom(1 / 2);
+            } else if (zone === 412) {
+                canvas.setZoom(1 / 2);
+            } else if (zone === 324) {
+                canvas.setZoom(1 / 1.5);
+            }else {
+                canvas.setZoom(1 / 1.2);
+            }
             canvas.loadFromJSON(response.data);
             var imageSource= 'http://packager.dev/images/zones/' + zone + '.png';
             var zoneMap = $('#zoneMap');

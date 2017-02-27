@@ -6,4 +6,8 @@
 
 @section('content')
     @include('partials.header')
+
+    <div class="container">
+        {{ $message }}
+    </div>
 @stop

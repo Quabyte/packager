@@ -14,7 +14,7 @@ Route::get('/get-data/{fileName}', 'ApplicationController@getData');
 Route::post('/add-to-cart', 'OrderController@addToCart');
 Route::post('/add-hotel', 'OrderController@addHotelToCart');
 Route::get('/package/{uuid}', 'OrderController@showOrder');
-Route::get('/confirmation', 'OrderController@confirmation');
+Route::post('/confirmation', 'OrderController@confirmation');
 
 /**
  * Hotels

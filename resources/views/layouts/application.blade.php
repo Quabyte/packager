@@ -26,7 +26,7 @@
 </head>
 <body class="@yield('bodyClass')">
     @include('partials.navbar')
-
+    @include('partials.poweredByAcikgise')
     @yield('content')
     <script src="{{ asset('js/global/jquery.min.js') }}"></script>
     <script src="{{ asset('js/global/bootstrap.min.js') }}"></script>

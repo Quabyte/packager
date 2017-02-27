@@ -9,14 +9,14 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand-custom" href="{{ url('/') }}">
-                <img src="{{ asset('images/deturlogo.png') }}" alt="" class="img-responsive" style="max-width: 80%;">
+                <img src="{{ asset('images/general/deturlogo.png') }}" alt="" class="img-responsive" style="max-width: 80%;">
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="elb-container">
-                <img src="http://packager.dev/images/elb.png" class="img-responsive">
+                <img src="{{ asset('images/optimized/elb-min.png') }}" class="img-responsive">
             </div>
             <ul class="nav navbar-nav">
                 @if(Auth::check() && Auth::user()->isAdmin())

@@ -12,6 +12,8 @@
 </div>
 
 <div class="col-md-4 col-md-offset-4">
+    {{--https://www.fbwebpos.com/fim/est3Dgate--}}
+    {{--https://entegrasyon.asseco-see.com.tr/fim/est3Dgate--}}
     <form action="https://www.fbwebpos.com/fim/est3Dgate" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="clientid" value="{{ $payment['clientid'] }}">
