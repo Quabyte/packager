@@ -59,7 +59,6 @@
                                 <div class="form-group">
                                     <select name="checkIn" class="form-control">
                                         <option value="">Check In</option>
-                                        <option value="18">18 May</option>
                                         <option value="19">19 May</option>
                                     </select>
                                 </div>
@@ -68,7 +67,6 @@
                                 <div class="form-group">
                                     <select name="checkOut" class="form-control">
                                         <option value="">Check Out</option>
-                                        <option value="21">21 May</option>
                                         <option value="22">22 May</option>
                                     </select>
                                 </div>
@@ -79,7 +77,6 @@
                                         <option value="">Room Type</option>
                                         <option value="1">Single Room</option>
                                         <option value="2">Double Room</option>
-                                        <option value="3">Triple Room</option>
                                     </select>
                                 </div>
                             </div>

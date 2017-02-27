@@ -30,6 +30,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="availability">Availability</label>
+                                        <input type="text" name="availability" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="roomType">Room Type</label>
                                         <select name="roomType" class="form-control">
                                             <option value="1">Single Room</option>

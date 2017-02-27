@@ -38,8 +38,8 @@ class PriceCategoriesTableSeeder extends Seeder
             'name' => 'Gold Hospitality',
             'color' => 'F2A654',
             'price' => 1508,
-            'available' => 157,
-            'online' => true,
+            'available' => 8,
+            'online' => false,
             'zones' => '103.104.105'
         ]);
 
@@ -48,7 +48,7 @@ class PriceCategoriesTableSeeder extends Seeder
             'color' => 'F7DA64',
             'price' => 788,
             'available' => 40,
-            'online' => true,
+            'online' => false,
             'zones' => '318'
         ]);
 
@@ -56,7 +56,7 @@ class PriceCategoriesTableSeeder extends Seeder
             'name' => 'Price List 3',
             'color' => '3AA99E',
             'price' => 623,
-            'available' => 200,
+            'available' => 49,
             'online' => true,
             'zones' => '124'
         ]);
@@ -66,7 +66,7 @@ class PriceCategoriesTableSeeder extends Seeder
             'color' => '62A8EA',
             'price' => 578,
             'available' => 40,
-            'online' => true,
+            'online' => false,
             'zones' => '316'
         ]);
 
@@ -83,7 +83,7 @@ class PriceCategoriesTableSeeder extends Seeder
             'name' => 'Price List 8',
             'color' => '926DDE',
             'price' => 398,
-            'available' => 40,
+            'available' => 26,
             'online' => true,
             'zones' => '324'
         ]);
@@ -92,7 +92,7 @@ class PriceCategoriesTableSeeder extends Seeder
             'name' => 'Price List 10',
             'color' => '677AE4',
             'price' => 338,
-            'available' => 50,
+            'available' => 10,
             'online' => true,
             'zones' => '412'
         ]);

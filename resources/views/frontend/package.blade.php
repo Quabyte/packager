@@ -6,6 +6,7 @@
 
 @section('fonts')
     <link rel="stylesheet" href="{{ asset('fonts/material-design/material-design.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/font-awesome/font-awesome.min.css') }}">
 @stop
 
 @section('bodyClass', 'app')
@@ -33,14 +34,14 @@
                                 @foreach(\App\Models\Order::listSeats($order->id) as $seat)
                                     @include('partials.itemsCard')
                                 @endforeach
-                                @foreach(\App\Models\Hotel::listHotels($order->id) as $hotel)
-                                    <p>{{ $hotel->uuid }}</p>
-                                    <p>{{ $hotel->subtotal }}</p>
+                                @foreach(\App\Models\Hotel::listHotels($order->id) as $hotelItem)
+                                    <?php $hotel = \App\Models\Hotel::where('unique_identifier', '=', $hotelItem->uuid)->first() ?>
+                                    @include('partials.hotelItemCard')
                                 @endforeach
                             </div>
                             <div class="col-md-4">
                                 <h5>IMPORTANT DETAILS</h5>
-                                <p>- All packages include meal service on site.</p>
+                                <p>- All packages include 1 sandwich, soft drink and snack.</p>
                                 <p>- Optionaly you can add accommodation to your package.</p>
                                 <p>- You have 20 minutes before you finish your purchase.</p>
                                 <p>- In order to complete your purchase, please Register or Login below.</p>
@@ -69,8 +70,15 @@
                         </div>
                     </div>
                 @else
-                    <div class="col-md-12">
-                        @include('partials.finansbank')
+                    <div class="panel panel-default">
+                        <div class="panel-title">
+                            <h4 class="panel-heading mb-0">
+                                SECURE 3D PAYMENT
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            @include('partials.finansbank')
+                        </div>
                     </div>
                 @endif
             </div>

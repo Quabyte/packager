@@ -13,25 +13,37 @@ class HotelsTableSeeder extends Seeder
     {
         DB::table('hotels')->insert([
             'id' => 1,
-            'unique_identifier' => rand(0, 5),
-            'name' => 'Swissotel The Bosphorus Istanbul',
-            'media_path' => 'swiss',
+            'unique_identifier' => str_random(6),
+            'name' => 'The Marmara Taksim',
+            'media_path' => 'marmara-taksim',
             'stars' => 5,
-            'review_point' => 9,
-            'review_count' => 2914,
-            'location' => 'Macka/Besiktas',
+            'review_point' => 8.4,
+            'review_count' => 2278,
+            'location' => 'Taksim/Beyoglu',
             'description' => 'Lorem ipsum dolor'
         ]);
 
         DB::table('hotels')->insert([
             'id' => 2,
-            'unique_identifier' => 'kajnjkfga',
-            'name' => 'Divan Hotel Istanbul',
-            'media_path' => 'divan',
+            'unique_identifier' => str_random(6),
+            'name' => 'The Marmara Pera',
+            'media_path' => 'marmara-pera',
             'stars' => 4,
-            'review_point' => 8,
-            'review_count' => 1436,
-            'location' => 'Mecidiyekoy/Sisli',
+            'review_point' => 8.1,
+            'review_count' => 2345,
+            'location' => 'Tepebasi/Beyoglu',
+            'description' => 'Lorem ipsum dolor'
+        ]);
+
+        DB::table('hotels')->insert([
+            'id' => 3,
+            'unique_identifier' => str_random(6),
+            'name' => 'InterContinental Istanbul',
+            'media_path' => 'intercontinental',
+            'stars' => 5,
+            'review_point' => 8.7,
+            'review_count' => 2634,
+            'location' => 'Taksim/Beyoglu',
             'description' => 'Lorem ipsum dolor'
         ]);
     }

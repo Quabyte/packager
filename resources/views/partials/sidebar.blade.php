@@ -7,7 +7,16 @@
             <h4>Price Categories</h4>
         </div>
         <div class="categories">
-
+            <div class="singleCategory" onclick="getZoneView(103)">
+                <span class="categoryColor" style="background: #F2A654"></span>
+                <div class="categoryInfo">
+                    <p class="categoryName">Gold Hospitality</p>
+                    <span class="ticketCount">Available 8</span>
+                </div>
+                <div class="categoryPrice">
+                    <a href="#" class="btn btn-block btn-default">1508.00 €</a>
+                </div>
+            </div>
             @foreach($categories as $category)
 
                 {{-- Check if the price category has more than one zone --}}

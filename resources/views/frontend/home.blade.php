@@ -19,6 +19,7 @@
 
 @section('footer.js')
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="application/javascript" charset="UTF-8" src="https://tk3d.tk3dapi.com/ticketing3d/TICKETING3D.js"></script>
     <script src="{{ asset('js/seatbit/fabric.min.js') }}"></script>
     <script src="{{ asset('js/seatbit/zone.js') }}"></script>
     <script src="{{ asset('js/seatbit/seat.js') }}"></script>

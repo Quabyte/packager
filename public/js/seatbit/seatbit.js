@@ -2,6 +2,11 @@ var canvas = new fabric.Canvas('c', {
     selection: false
 });
 var venueJSON;
+var tk3d = new TICKETING3D('eu-tr-00002');
+var view3d_module = tk3d.loadModule({
+    module: "view3d",
+    container: "three-d"
+});
 /**
  * Loads the main zone view canvas
  */
@@ -150,6 +155,7 @@ function selected(el) {
                         seat.setStroke('#F96868');
                         seat.setFill('#F96868');
                         seat.setStatus('SL');
+                        view3d_module.load(seat.uuid);
                         cart.addToCart(seat);
                         canvas.renderAll();
                     } else if (seat.status === 'SL') {
@@ -180,8 +186,10 @@ function getZoneView(zone) {
             canvas.clear();
             canvas.setZoom(canvas.getZoom());
             canvas.loadFromJSON(response.data);
-            var imageSource= 'http://packager.dev/images/zones/' + el.target.number + '.png';
-            $('#zoneMap').prepend('<a href="/"><img src="' + imageSource + '" class="img-responsive"/></a>');
+            var imageSource= 'http://packager.dev/images/zones/' + zone + '.png';
+            var zoneMap = $('#zoneMap');
+            zoneMap.empty();
+            zoneMap.prepend('<a href="/"><img src="' + imageSource + '" class="img-responsive"/></a>');
             canvas.renderAll();
 
             canvas.on('mouse:down', function (el) {
