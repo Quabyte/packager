@@ -3,17 +3,14 @@
 @section('bodyClass', 'app')
 
 @section('content')
-    <div class="headerBanner">
-        <div class="overlayImage">
-            <h1>Turkish Airlines Final Four Package Sales</h1>
-        </div>
-    </div>
-    <div class="container">
+    @include('partials.header')
+    <div class="container" style="background: #fff;">
         <div class="row">
             @include('partials.sidebar')
             <div class="canvasWrapper" id="canvas-holder">
                 @include('partials.canvasui')
-                <canvas id="c"></canvas>
+                <canvas id="c" width="875" height="550"></canvas>
+                @include('partials.zoneView')
             </div>
             @include('partials.cart')
         </div>

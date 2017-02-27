@@ -1,4 +1,4 @@
-<nav class="navbar navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-custom">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -15,6 +15,9 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="elb-container">
+                <img src="http://packager.dev/images/elb.png" class="img-responsive">
+            </div>
             <ul class="nav navbar-nav">
                 @if(Auth::check() && Auth::user()->isAdmin())
                     <li>

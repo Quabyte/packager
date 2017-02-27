@@ -3,9 +3,10 @@
 @section('bodyClass', 'app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        @include('auth.partials.login-form')
+    @include('partials.header')
+    <div class="container">
+        <div class="row" style="margin-top: 30px;">
+           @include('auth.partials.login-form')
+        </div>
     </div>
-</div>
 @endsection

@@ -1,7 +1,7 @@
 {{-- Check whether any hotels on database--}}
 @if(count($hotels) >= 1)
     @foreach($hotels as $hotel)
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="panel panel-default">
 
                 {{-- Panel Header --}}
