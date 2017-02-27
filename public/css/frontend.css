@@ -1,6 +1,5 @@
 .app {
-    padding-top: 60px;
-    background: #fff;
+    background: #fafafa;
     color: #768395;
 }
 
@@ -10,8 +9,7 @@ CANVAS
 .canvasWrapper {
     width: 75%;
     height: 100%;
-    margin-left: 25%;
-    position: absolute;
+    position: relative;
     padding: 0;
     float: left;
 }
@@ -24,9 +22,21 @@ canvas {
 NAVBAR
 **/
 .navbar-custom {
-    background-color: #333;
+    background-color: transparent;
     min-height: 60px;
     border: none;
+}
+
+.elb-container {
+    height: 60px;
+    position: relative;
+    float: left;
+    left: 29%;
+    padding: 5px;
+}
+
+.elb-container > img {
+    height: 90%;
 }
 
 .navbar-toggle {
@@ -112,7 +122,7 @@ SIDEBAR
     position: relative;
     padding: 0;
     margin: 0;
-    min-height: 100vh;
+    min-height: 72vh;
     float: left;
     background: #fff;
     box-shadow: 2px 0 10px rgba(0,0,0,.1), 1px 0 0 rgba(0,0,0,.05);
@@ -236,8 +246,9 @@ CART
     right: 0;
     width: 25%;
     float: right;
-    top: 60px;
+    top: 240px;
     height: 100%;
+    min-height: 100%;
     z-index: 10;
     position: absolute;
     -webkit-transition: right 0.3s;
@@ -291,4 +302,148 @@ CART
     margin: 0;
     padding: 0;
     background: #e4eaec;
+}
+
+/**
+CANVAS UI
+**/
+#zoneMap {
+    position: absolute;
+    right: 20px;
+    width: 30%;
+    top: 45%;
+}
+
+.canvasui {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.panContainer {
+    z-index: 10;
+    position: relative;
+    float: right;
+    display: inline-block;
+}
+
+.pan {
+    width: 100px;
+    z-index: 10;
+    border-radius: 2px;
+}
+
+.panner {
+    background: #FFF;
+    color: #3aa99e;
+    border: 1px solid #CCC;
+    display: block;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+}
+
+.panner-right {
+    right: 6px;
+    position: absolute;
+    float: right;
+    top: 14px;
+}
+
+.panner-left {
+    left: 6px;
+    position: absolute;
+    float: right;
+    top: 14px;
+}
+
+.zoomContainer {
+    z-index: 10;
+    position: relative;
+    float: right;
+    display: inline-block;
+}
+
+.zoom {
+    width: 30px;
+    z-index: 10;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.zoomer {
+    background: #FFF;
+    color: #3aa99e;
+    border: 1px solid #CCC;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: 500;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+}
+
+.headerBanner {
+    width: 100%;
+    height: 240px;
+    background: url('http://packager.dev/images/slide_4.jpg');
+    background-size: cover;
+    margin-top: -82px;
+}
+
+.overlayImage {
+    background: linear-gradient(to bottom, rgba(20, 30, 48, 0.7) 0%, rgba(36, 59, 85, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+}
+
+.overlayImage > h1 {
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.overlayImage > p {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/**
+ITEMS
+**/
+.itemCard {
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+}
+
+.panel-footer-custom {
+    padding: 10px 15px;
+    background-color: #526069;
+    border-top: 1px solid #526069;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #e4eaec;
 }
