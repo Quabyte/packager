@@ -1,5 +1,6 @@
 <?php
 Route::get('/', 'ApplicationController@index');
+Route::get('/j0k3s0n-U', 'ApplicationController@countdown');
 
 /**
  * Venue Related
@@ -13,6 +14,7 @@ Route::get('/get-data/{fileName}', 'ApplicationController@getData');
 Route::post('/add-to-cart', 'OrderController@addToCart');
 Route::post('/add-hotel', 'OrderController@addHotelToCart');
 Route::get('/package/{uuid}', 'OrderController@showOrder');
+Route::get('/confirmation', 'OrderController@confirmation');
 
 /**
  * Hotels

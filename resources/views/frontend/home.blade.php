@@ -3,12 +3,14 @@
 @section('bodyClass', 'app')
 
 @section('content')
-    <div class="container-fluid">
+    @include('partials.header')
+    <div class="container" style="background: #fff;">
         <div class="row">
             @include('partials.sidebar')
             <div class="canvasWrapper" id="canvas-holder">
                 @include('partials.canvasui')
-                <canvas id="c"></canvas>
+                <canvas id="c" width="875" height="550"></canvas>
+                @include('partials.zoneView')
             </div>
             @include('partials.cart')
         </div>
@@ -17,6 +19,7 @@
 
 @section('footer.js')
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="application/javascript" charset="UTF-8" src="https://tk3d.tk3dapi.com/ticketing3d/TICKETING3D.js"></script>
     <script src="{{ asset('js/seatbit/fabric.min.js') }}"></script>
     <script src="{{ asset('js/seatbit/zone.js') }}"></script>
     <script src="{{ asset('js/seatbit/seat.js') }}"></script>

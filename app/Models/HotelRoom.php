@@ -26,6 +26,7 @@ class HotelRoom extends Model
         $room->hotel_id = $hotelID;
         $room->name = $data->roomName;
         $room->price = $data->roomPrice;
+        $room->availability = $data->availability;
         $room->type = $data->roomType;
         $room->save();
     }
