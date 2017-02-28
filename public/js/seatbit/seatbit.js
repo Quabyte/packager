@@ -141,7 +141,6 @@ function selected(el) {
         })
             .then(function (response) {
                 canvas.clear();
-
                 if (el.target.number === 124) {
                     canvas.setZoom(1 / 2);
                 } else if (el.target.number === 412) {

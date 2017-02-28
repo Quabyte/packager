@@ -116,7 +116,7 @@
 
     <div class="col-md-6">
         <div class="form-group{{ $errors->has('tc_id') ? ' has-error' : '' }}">
-            <label for="tc_id" class="col-md-4 control-label">TC Kimlik</label>
+            <label for="tc_id" class="col-md-4 control-label">Identification Number (TC Kimlik)</label>
             <input id="tc_id" type="text" class="form-control" name="tc_id" value="{{ old('tc_id') }}" required autofocus>
 
             @if ($errors->has('tc_id'))
