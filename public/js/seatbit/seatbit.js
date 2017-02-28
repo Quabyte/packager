@@ -32,7 +32,7 @@ function loadVenue()
             venueJSON = response;
             canvas.loadFromJSON(response.data);
             canvas.renderAll();
-            fabric.Image.fromURL(baseUrl + '/images/court.png', function(oImg) {
+            fabric.Image.fromURL(baseUrl + '/images/court.jpg', function(oImg) {
                 // scale image down, and flip it, before adding it onto canvas
                 oImg.setOptions({
                     'evented': false,
