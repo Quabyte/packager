@@ -7,6 +7,7 @@ var view3d_module = tk3d.loadModule({
     module: "view3d",
     container: "three-d"
 });
+var baseUrl = 'http://beta.final4istanbul.com';
 /**
  * Loads the main zone view canvas
  */
@@ -31,7 +32,7 @@ function loadVenue()
             venueJSON = response;
             canvas.loadFromJSON(response.data);
             canvas.renderAll();
-            fabric.Image.fromURL('http://packager.dev/images/court.png', function(oImg) {
+            fabric.Image.fromURL(baseUrl + '/images/court.png', function(oImg) {
                 // scale image down, and flip it, before adding it onto canvas
                 oImg.setOptions({
                     'evented': false,
@@ -151,7 +152,7 @@ function selected(el) {
                     canvas.setZoom(1 / 1.2);
                 }
                 canvas.loadFromJSON(response.data);
-                var imageSource= 'http://packager.dev/images/zones/' + el.target.number + '.png';
+                var imageSource= baseUrl + '/images/zones/' + el.target.number + '.png';
                 $('#zoneMap').prepend('<a href="/"><img src="' + imageSource + '" class="img-responsive"/></a>');
                 canvas.renderAll();
 
@@ -202,7 +203,7 @@ function getZoneView(zone) {
                 canvas.setZoom(1 / 1.2);
             }
             canvas.loadFromJSON(response.data);
-            var imageSource= 'http://packager.dev/images/zones/' + zone + '.png';
+            var imageSource= baseUrl + '/images/zones/' + zone + '.png';
             var zoneMap = $('#zoneMap');
             zoneMap.empty();
             zoneMap.prepend('<a href="/"><img src="' + imageSource + '" class="img-responsive"/></a>');
