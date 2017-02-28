@@ -47,7 +47,7 @@ function loadVenue()
                     'lockRotation': true,
                     'lockScalingX': true,
                     'lockScalingY': true,
-                    'top': 270,
+                    'top': 269,
                     'width': 155,
                 });
                 canvas.add(oImg);
@@ -216,6 +216,7 @@ function getZoneView(zone) {
                     seat.setStroke('#F96868');
                     seat.setFill('#F96868');
                     seat.setStatus('SL');
+                    view3d_module.load(seat.uuid);
                     cart.addToCart(seat);
                     canvas.renderAll();
                 } else if (seat.status === 'SL') {
