@@ -40,4 +40,9 @@ class ApplicationController extends Controller
     {
         return view('frontend.countdown');
     }
+
+    public function redirectHome()
+    {
+        return redirect()->action('ApplicationController@index');
+    }
 }
