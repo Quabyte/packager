@@ -80,6 +80,7 @@ class PriceCategoryController extends Controller
 
         $category->price = $request->price;
         $category->online = $request->online;
+        $category->available = $request->available;
         $category->zones = $request->zones;
         $category->updated_at = Carbon::now('Europe/Istanbul');
         $category->save();

@@ -48,6 +48,15 @@
 
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="available">Available</label>
+                                <input type="text" name="available" value="{{ $category->available }}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
                             <input type="submit" class="btn btn-primary" value="Update">
                             <a href="{{ action('PriceCategoryController@index') }}">Cancel</a>
                         </div>
