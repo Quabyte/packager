@@ -1,12 +1,6 @@
 var canvas = new fabric.Canvas('c', {
     selection: false
 });
-var venueJSON;
-var tk3d = new TICKETING3D('eu-tr-00002');
-var view3d_module = tk3d.loadModule({
-    module: "view3d",
-    container: "three-d"
-});
 var baseUrl = 'http://beta.final4istanbul.com';
 /**
  * Loads the main zone view canvas
@@ -106,6 +100,24 @@ var cart = new Vue({
             this.items.splice(this.items.indexOf(item), 1);
         },
         sendCartData: function () {
+            // $.ajax({
+            //     method: 'post',
+            //     url: '/add-to-cart',
+            //     data: {
+            //         itemCount: this.itemCount,
+            //         total: this.total,
+            //         items: this.items
+            //     },
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     },
+            //     success: function (response) {
+            //         alert(response);
+            //     },
+            //     error: function (response) {
+            //         alert(response);
+            //     }
+            // });
             axios({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,10 +131,10 @@ var cart = new Vue({
                 }
             })
                 .then(function (response) {
-                    window.location.replace(response.data.redirect);
+                    window.location.replace('/package/' + response.data.uuid);
                 })
                 .catch(function (response) {
-                    alert(response);
+                    console.log(JSON.stringify(response));
                 });
         }
     }
@@ -164,7 +176,6 @@ function selected(el) {
                         seat.setStroke('#F96868');
                         seat.setFill('#F96868');
                         seat.setStatus('SL');
-                        view3d_module.load(seat.uuid);
                         cart.addToCart(seat);
                         canvas.renderAll();
                     } else if (seat.status === 'SL') {
@@ -216,7 +227,6 @@ function getZoneView(zone) {
                     seat.setStroke('#F96868');
                     seat.setFill('#F96868');
                     seat.setStatus('SL');
-                    view3d_module.load(seat.uuid);
                     cart.addToCart(seat);
                     canvas.renderAll();
                 } else if (seat.status === 'SL') {

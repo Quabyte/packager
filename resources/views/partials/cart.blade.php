@@ -21,5 +21,5 @@
     <div class="cart-total">
         <p class="text-center" style="margin: 0;">TOTAL @{{ total }} EUR</p>
     </div>
-    <a href="" @click="sendCartData()" class="btn btn-lg btn-success btn-block" style="border-radius: 0;">CHECKOUT</a>
+    <a href="#" onclick="cart.sendCartData()" class="btn btn-lg btn-success btn-block" style="border-radius: 0;">CHECKOUT</a>
 </div>

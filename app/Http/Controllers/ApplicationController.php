@@ -12,7 +12,11 @@ class ApplicationController extends Controller
     public function index()
     {
         $categories = PriceCategory::where('online', '=', true)->get();
-        $uuid = Utilities::setUniqueCookie();
+        if (session()->has('uuid')) {
+            $uuid = session()->get('uuid');
+        } else {
+            $uuid = session()->put('uuid', str_random(6));
+        }
 
         return view('frontend.home', compact('categories', 'uuid'));
     }

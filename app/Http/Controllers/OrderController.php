@@ -7,10 +7,10 @@ use App\Jobs\UpdateJsonView;
 use App\Models\Hotel;
 use App\Models\Order;
 use App\Models\Seat;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 
 class OrderController extends Controller
 {
@@ -22,27 +22,18 @@ class OrderController extends Controller
      */
     public function addToCart(Request $request)
     {
-        $uuid = Cookie::get('uuid');
+        $uuid = session()->get('uuid');
 
-        if (Seat::checkIfSeatsAvailable($request)) {
+        if (Order::checkIfExists($uuid)) {
 
-            if (Order::checkIfExists($uuid)) {
-
-                Order::updateOrder($request, $uuid);
-
-            } else {
-                Order::createNewOrder($request, $uuid);
-            }
-
-            return response()
-                ->json([
-                    'redirect' => '/package/' . $uuid
-                ])
-                ->cookie('uuid', $uuid);
+            Order::updateOrder($request, $uuid);
 
         } else {
-            return response('Selected seats are not available!');
+            Order::createNewOrder($request, $uuid);
         }
+
+        return response()->json(['uuid' => $uuid]);
+
 
         // Create a new Job to generate the new JSON.
         // Add to Queue the package in order to clear it.
@@ -56,7 +47,7 @@ class OrderController extends Controller
      */
     public function addHotelToCart(Request $request)
     {
-        $uuid = Cookie::get('uuid');
+        $uuid = session()->get('uuid');
 
         if (Order::checkIfExists($uuid)) {
             Order::updateWithHotelOrder($uuid, $request);
@@ -92,7 +83,7 @@ class OrderController extends Controller
 //
 //        dispatch($releaseSeats);
 
-        if (Cookie::get('uuid') === $uuid) {
+        if (session()->has('uuid')) {
             return view('frontend.package', compact('order', 'hotels', 'payment'));
         } else {
             return redirect()->action('ApplicationController@index');
