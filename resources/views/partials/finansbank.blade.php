@@ -17,7 +17,7 @@
 
         <input type="hidden" name="storetype" value="3d_pay_hosting" >
         <input type="hidden" name="refreshtime" value="10" >
-        <input type="hidden" name="lang" value="tr">
+        <input type="hidden" name="lang" value="en">
 
         <input type="submit" class="btn btn-success btn-block" value="PAY NOW">
     </form>

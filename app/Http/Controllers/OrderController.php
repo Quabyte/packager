@@ -90,6 +90,12 @@ class OrderController extends Controller
         }
     }
 
+    /**
+     * Order confirmation response. Checks whether the payment successfull and is still available.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function confirmation(Request $request)
     {
         if (!Order::confirmed($request)) {

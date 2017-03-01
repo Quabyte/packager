@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
+    /**
+     * HomePage
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $categories = PriceCategory::where('online', '=', true)->get();
@@ -21,6 +26,11 @@ class ApplicationController extends Controller
         return view('frontend.home', compact('categories', 'uuid'));
     }
 
+    /**
+     * Loads Venue JSON
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function loadVenue()
     {
         $venue = Storage::get('seatbit/venue.json');
@@ -28,6 +38,12 @@ class ApplicationController extends Controller
         return response($venue);
     }
 
+    /**
+     * Returns Zone JSON
+     *
+     * @param $fileName
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function getData($fileName)
     {
         $path = 'seatbit/zones/' . $fileName . '.json';
@@ -36,11 +52,21 @@ class ApplicationController extends Controller
         return response($data);
     }
 
+    /**
+     * Countdown page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function countdown()
     {
         return view('frontend.countdown');
     }
 
+    /**
+     * Redirects the user to index page.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function redirectHome()
     {
         return redirect()->action('ApplicationController@index');

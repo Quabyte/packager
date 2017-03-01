@@ -154,6 +154,11 @@ class Order extends Model
         $order->save();
     }
 
+    /**
+     * Assigns the authenticated user to the order.
+     *
+     * @param $orderID
+     */
     public static function assignUserId($orderID)
     {
         $order = Order::where('id', '=', $orderID)->first();
@@ -161,6 +166,12 @@ class Order extends Model
         $order->save();
     }
 
+    /**
+     * Prepares the payment form with the current order data.
+     *
+     * @param $order
+     * @return array
+     */
     public static function preparePayment($order)
     {
         $paymentDetails = [
@@ -184,6 +195,12 @@ class Order extends Model
         return $paymentDetails;
     }
 
+    /**
+     * Prepares Finansbank Hash value
+     *
+     * @param $paymentDetails
+     * @return string
+     */
     protected static function prepareHash($paymentDetails)
     {
         $hashstr = $paymentDetails['clientid'] .
@@ -199,6 +216,12 @@ class Order extends Model
         return $hash = base64_encode(pack('H*',sha1($hashstr)));
     }
 
+    /**
+     * Checks whether the payment confirmed.
+     *
+     * @param Request $request
+     * @return bool
+     */
     public static function confirmed(Request $request)
     {
         $hashparams = $request->HASHPARAMS;
@@ -269,6 +292,12 @@ class Order extends Model
         }
     }
 
+    /**
+     * Checks whether the indicated order is still available.
+     *
+     * @param Request $request
+     * @return bool
+     */
     public static function checkStillAvailable(Request $request)
     {
         $order = Order::where('unique_id', '=', $request->oid)->first();
