@@ -79,12 +79,12 @@ class PriceCategoryController extends Controller
         $category = PriceCategory::find($id);
 
         $category->price = $request->price;
-        $category->available = $request->online;
+        $category->online = $request->online;
         $category->zones = $request->zones;
         $category->updated_at = Carbon::now('Europe/Istanbul');
         $category->save();
 
-        $seats = Seat::where('category_id', '=', $category->id);
+        $seats = Seat::where('category_id', '=', $category->id)->get();
 
         dispatch(new UpdateJsonView($seats));
 

@@ -39,7 +39,7 @@ class Seat extends Model
         foreach ($data->items as $seatData) {
             $seat = Seat::where('uuid', '=', $seatData['uuid'])->first();
 
-            if ($seat->status !== 'AV') {
+            if ($seat->status != 'AV') {
                 array_push($notAvailableSeats, $seat->uuid);
             }
         }

@@ -24,19 +24,19 @@ class OrderController extends Controller
     {
         $uuid = session()->get('uuid');
 
-        if (Order::checkIfExists($uuid)) {
+        if (Seat::checkIfSeatsAvailable($request)) {
+            if (Order::checkIfExists($uuid)) {
 
-            Order::updateOrder($request, $uuid);
+                Order::updateOrder($request, $uuid);
 
+            } else {
+                Order::createNewOrder($request, $uuid);
+            }
         } else {
-            Order::createNewOrder($request, $uuid);
+            return response('Seats are not available!');
         }
 
         return response()->json(['uuid' => $uuid]);
-
-
-        // Create a new Job to generate the new JSON.
-        // Add to Queue the package in order to clear it.
     }
 
     /**
@@ -70,7 +70,7 @@ class OrderController extends Controller
         $hotels = Hotel::all();
 
         if (Auth::check()) {
-            Order::assignUserId($order);
+            Order::assignUserId($order->id);
             $payment = Order::preparePayment($order);
         }
 
@@ -93,13 +93,23 @@ class OrderController extends Controller
     public function confirmation(Request $request)
     {
         if (!Order::confirmed($request)) {
-            $message = 'Your payment is not successfull! Please try again!';
+            $message = 'Your payment is not successfull! Please contact to your bank!';
+
+            return view('frontend.error', compact('message'));
+
         } elseif (!Order::checkStillAvailable($request)) {
             $message = 'Your selected seats are not available since you exceed 20 minutes of purchase time. We will refund your money back in 24 hours!';
+
+            return view('frontend.error', compact('message'));
+
         } else {
             $message = 'Your purchase is successfull!';
-        }
+            $order = Order::where('unique_id', '=', $request->oid)->first();
+            $order->status = 'successful';
+            $order->updated_at = Carbon::now('Europe/Istanbul');
+            $order->save();
 
-        return view('frontend.confirmation', compact('message'));
+            return view('frontend.confirmation', compact('message', 'order'));
+        }
     }
 }

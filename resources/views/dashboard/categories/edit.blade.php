@@ -12,6 +12,7 @@
             <div class="panel-body">
                 <form action="{{ action('PriceCategoryController@update', ['id' => $category->id]) }}" method="POST">
                     {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="PUT">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

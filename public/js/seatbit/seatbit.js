@@ -2,6 +2,12 @@ var canvas = new fabric.Canvas('c', {
     selection: false
 });
 var baseUrl = 'http://beta.final4istanbul.com';
+
+var tk3d = new TICKETING3D('eu-tr-00002');
+var view3d_module = tk3d.loadModule({
+    module: "view3d",
+    container: "three-d"
+});
 /**
  * Loads the main zone view canvas
  */
@@ -173,6 +179,7 @@ function selected(el) {
                     var seat = el.target;
 
                     if (seat.status === 'AV') {
+                        view3d_module.load(seat.uuid);
                         seat.setStroke('#F96868');
                         seat.setFill('#F96868');
                         seat.setStatus('SL');
@@ -224,6 +231,7 @@ function getZoneView(zone) {
                 var seat = el.target;
 
                 if (seat.status === 'AV') {
+                    view3d_module.load(seat.uuid);
                     seat.setStroke('#F96868');
                     seat.setFill('#F96868');
                     seat.setStatus('SL');

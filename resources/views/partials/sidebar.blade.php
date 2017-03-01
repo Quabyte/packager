@@ -14,7 +14,7 @@
                     <span class="ticketCount">Available 8</span>
                 </div>
                 <div class="categoryPrice">
-                    <a href="#" class="btn btn-block btn-default">1508.00 €</a>
+                    <a href="#" class="btn btn-block btn-default">1779.00 €</a>
                 </div>
             </div>
             @foreach($categories as $category)

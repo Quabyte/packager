@@ -1,17 +1,4 @@
-<div class="alert alert-info" role="alert">
-    <p class="text-center">You have 10 minutes to complete your purchase!</p>
-</div>
-
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="text-center">
-            <span class="fa fa-cc-mastercard" style="font-size: 42px;"></span>
-            <span class="fa fa-cc-visa" style="font-size: 42px;"></span>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-4 col-md-offset-4">
+<div>
     {{--https://www.fbwebpos.com/fim/est3Dgate--}}
     {{--https://entegrasyon.asseco-see.com.tr/fim/est3Dgate--}}
     <form action="https://www.fbwebpos.com/fim/est3Dgate" method="POST">

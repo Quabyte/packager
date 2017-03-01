@@ -51,46 +51,57 @@
                     </div>
 
                     <div class="panel-footer-custom">
-                        <p>TOTAL: {{ $order->total }} EUR</p>
+                        @if(Auth::guest())
+                            <p>TOTAL: {{ $order->total }} EUR</p>
+                        @else
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>TOTAL: {{ $order->total }} EUR</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#hotelsModal">
+                                            Looking for Accommodation?
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        @include('partials.finansbank')
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
-                @if(Auth::guest())
-                    <div class="panel panel-default">
-                        <div class="panel-title">
-                            <h4 class="panel-heading mb-0">
-                                REGISTER OR LOGIN
-                            </h4>
+            @if(Auth::guest())
+                <div class="col-md-8">
+
+                        <div class="panel panel-default">
+                            <div class="panel-title">
+                                <h4 class="panel-heading mb-0">
+                                    REGISTER OR LOGIN
+                                </h4>
+                            </div>
+
+                            <div class="panel-body">
+                                @include('partials.authentication')
+                            </div>
                         </div>
 
-                        <div class="panel-body">
-                            @include('partials.authentication')
-                        </div>
-                    </div>
-                @else
-                    <div class="panel panel-default">
-                        <div class="panel-title">
-                            <h4 class="panel-heading mb-0">
-                                SECURE 3D PAYMENT
-                            </h4>
-                        </div>
-                        <div class="panel-body">
-                            @include('partials.finansbank')
-                        </div>
-                    </div>
-                @endif
-            </div>
 
-            <div class="col-md-4">
-                @include('partials.eventInformation')
+                </div>
+                <div class="col-md-4">
+                    @include('partials.eventInformation')
 
 
-                <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#hotelsModal">
-                    Looking for Accommodation?
-                </button>
-            </div>
+                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#hotelsModal">
+                        Looking for Accommodation?
+                    </button>
+                </div>
+            @endif
 
         </div>
     </div>

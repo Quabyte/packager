@@ -154,8 +154,9 @@ class Order extends Model
         $order->save();
     }
 
-    public static function assignUserId($order)
+    public static function assignUserId($orderID)
     {
+        $order = Order::where('id', '=', $orderID)->first();
         $order->user_id = Auth::id();
         $order->save();
     }
@@ -163,7 +164,7 @@ class Order extends Model
     public static function preparePayment($order)
     {
         $paymentDetails = [
-            'clientid' => '600697513',
+            'clientid' => '600697513', //'600697513',
             'amount' => $order->total,
             'oid' => $order->unique_id,
             'okUrl' => 'http://packager.dev/confirmation',
@@ -193,7 +194,7 @@ class Order extends Model
                    $paymentDetails['islemtipi'] .
                    $paymentDetails['taksit'] .
                    $paymentDetails['rnd'] .
-                   'KUTU7513';
+                   'KUTU7513'; //'KUTU7513';
 
         return $hash = base64_encode(pack('H*',sha1($hashstr)));
     }
