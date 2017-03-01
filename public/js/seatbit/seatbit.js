@@ -179,12 +179,12 @@ function selected(el) {
                     var seat = el.target;
 
                     if (seat.status === 'AV') {
-                        view3d_module.load(seat.uuid);
+                        seat.setStatus('SL');
                         seat.setStroke('#F96868');
                         seat.setFill('#F96868');
-                        seat.setStatus('SL');
-                        cart.addToCart(seat);
                         canvas.renderAll();
+                        cart.addToCart(seat);
+                        view3d_module.load(seat.uuid);
                     } else if (seat.status === 'SL') {
                         seat.setStroke('#3AA99E');
                         seat.setFill('#3AA99E');
@@ -231,12 +231,12 @@ function getZoneView(zone) {
                 var seat = el.target;
 
                 if (seat.status === 'AV') {
-                    view3d_module.load(seat.uuid);
+                    seat.setStatus('SL');
                     seat.setStroke('#F96868');
                     seat.setFill('#F96868');
-                    seat.setStatus('SL');
-                    cart.addToCart(seat);
                     canvas.renderAll();
+                    cart.addToCart(seat);
+                    view3d_module.load(seat.uuid);
                 } else if (seat.status === 'SL') {
                     seat.setStroke('#3AA99E');
                     seat.setFill('#3AA99E');

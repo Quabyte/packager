@@ -6,6 +6,7 @@ use App\Jobs\ReleaseSeats;
 use App\Jobs\UpdateJsonView;
 use App\Models\Hotel;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Seat;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Carbon\Carbon;
@@ -67,6 +68,7 @@ class OrderController extends Controller
     public function showOrder($uuid)
     {
         $order = Order::where('unique_id', '=', $uuid)->first();
+        $orderID = $order->id;
         $hotels = Hotel::all();
 
         if (Auth::check()) {
@@ -74,7 +76,7 @@ class OrderController extends Controller
             $payment = Order::preparePayment($order);
         }
 
-        $seats = Seat::where('order_id', '=', $order->id)->get();
+        $seats = Seat::where('order_id', '=', $orderID)->get();
 
         dispatch(new UpdateJsonView($seats));
 
@@ -117,5 +119,19 @@ class OrderController extends Controller
 
             return view('frontend.confirmation', compact('message', 'order'));
         }
+    }
+
+    public function redirectUndefined()
+    {
+        $uuid = session()->get('uuid');
+
+        return redirect()->action('OrderController@showOrder', ['uuid' => $uuid]);
+    }
+
+    public function removeFromOrder($itemID)
+    {
+        OrderItem::removeItem($itemID);
+
+        return redirect()->back();
     }
 }

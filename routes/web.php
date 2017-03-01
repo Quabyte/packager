@@ -1,6 +1,5 @@
 <?php
 Route::get('/', 'ApplicationController@index');
-Route::get('/home', 'ApplicationController@redirectHome');
 Route::get('/j0k3s0n-U', 'ApplicationController@countdown');
 
 /**
@@ -14,6 +13,7 @@ Route::get('/get-data/{fileName}', 'ApplicationController@getData');
  */
 Route::post('/add-to-cart', 'OrderController@addToCart');
 Route::post('/add-hotel', 'OrderController@addHotelToCart');
+Route::get('/package/undefined', 'OrderController@redirectUndefined');
 Route::get('/package/{uuid}', 'OrderController@showOrder');
 Route::post('/confirmation', 'OrderController@confirmation');
 

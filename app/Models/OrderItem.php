@@ -94,4 +94,14 @@ class OrderItem extends Model
         $item->updated_at = Carbon::now('Europe/Istanbul');
         $item->save();
     }
+
+    public static function removeItem($itemID)
+    {
+        $item = OrderItem::where('id', '=', $itemID)->first();
+
+        if ($item->type === 'seat'){
+            $seat = Seat::where('uuid', '=', $item->uuid)->first();
+            Seat::releaseSeats($seat);
+        }
+    }
 }
