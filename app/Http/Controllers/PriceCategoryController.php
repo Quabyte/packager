@@ -63,8 +63,9 @@ class PriceCategoryController extends Controller
     public function edit($id)
     {
         $category = PriceCategory::find($id);
+        $availableCount = PriceCategory::calculateAvailableSeats($category->id);
 
-        return view('dashboard.categories.edit', compact('category'));
+        return view('dashboard.categories.edit', compact('category', 'availableCount'));
     }
 
     /**

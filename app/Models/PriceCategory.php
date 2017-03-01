@@ -42,4 +42,15 @@ class PriceCategory extends Model
 
         return $zones;
     }
+
+    public static function calculateAvailableSeats($categoryID)
+    {
+
+        $seats = Seat::where([
+            ['category_id', '=', $categoryID],
+            ['status', '=', 'AV']
+        ])->get();
+
+        return $seats->count();
+    }
 }

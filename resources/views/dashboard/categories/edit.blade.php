@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="available">Available</label>
-                                <input type="text" name="available" value="{{ $category->available }}" class="form-control">
+                                <input type="text" name="available" value="{{ $availableCount }}" class="form-control">
                             </div>
                         </div>
                     </div>
