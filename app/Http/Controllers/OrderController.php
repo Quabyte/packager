@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ReleaseSeats;
 use App\Jobs\UpdateJsonView;
+use App\Mail\ConfirmationEmail;
 use App\Models\Hotel;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Seat;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -116,6 +117,9 @@ class OrderController extends Controller
             $order->status = 'successful';
             $order->updated_at = Carbon::now('Europe/Istanbul');
             $order->save();
+
+            $user = Auth::user();
+            Mail::to($user)->send(new ConfirmationEmail($order->id));
 
             return view('frontend.confirmation', compact('message', 'order'));
         }
