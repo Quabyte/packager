@@ -1,5 +1,6 @@
 <?php
 Route::get('/', 'ApplicationController@index');
+Route::get('/profile', 'ApplicationController@showProfile');
 Route::get('/j0k3s0n-U', 'ApplicationController@countdown');
 
 /**

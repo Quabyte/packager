@@ -114,7 +114,7 @@ class OrderController extends Controller
         } else {
             $message = 'Your purchase is successfull!';
             $order = Order::where('unique_id', '=', $request->oid)->first();
-            $order->status = 'successful';
+            $order->status = 'completed';
             $order->updated_at = Carbon::now('Europe/Istanbul');
             $order->save();
 

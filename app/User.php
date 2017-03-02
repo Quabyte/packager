@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,5 +45,26 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public static function hasOrders($userID)
+    {
+        $orders = Order::where('user_id', '=', $userID)->get();
+
+        if ($orders->count()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function listOrders($userID)
+    {
+        $orders = Order::where([
+            ['user_id', '=', $userID],
+            ['status', '=', 'completed']
+        ])->get();
+
+        return $orders;
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\SeatByte\Utilities;
+use App\User;
 use Illuminate\Http\Request;
 use App\Models\PriceCategory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
@@ -70,5 +73,16 @@ class ApplicationController extends Controller
     public function redirectHome()
     {
         return redirect()->action('ApplicationController@index');
+    }
+
+    public function showProfile()
+    {
+        $user = Auth::user();
+
+        if (User::hasOrders($user->id)) {
+            $orders = User::listOrders($user->id);
+        }
+
+        return view('frontend.profile', compact('user', 'orders'));
     }
 }
