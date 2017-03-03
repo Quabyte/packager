@@ -24,10 +24,11 @@
                     </div>
 
                     <div class="panel-body">
-                        @foreach(\App\Models\OrderItem::where('order_id', '=', $order->id)->get() as $item)
-                            <p>{{ $item->uuid }}</p>
-                            <p>{{ $item->type }}</p>
-                            <p>{{ $item->subtotal }}</p>
+                        @foreach(\App\Models\Order::listSeats($order->id) as $seats)
+                            @include('partials.itemsCard')
+                        @endforeach
+                        @foreach(\App\Models\Hotel::listHotels($order->id) as $hotel)
+                            @include('partials.hotelItemCard')
                         @endforeach
                     </div>
                 </div>
