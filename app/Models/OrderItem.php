@@ -49,14 +49,14 @@ class OrderItem extends Model
     {
         foreach ($data as $itemData) {
             $item = new OrderItem();
-            $item->type = $itemData['type'];
+            $item->type = 'seat';
 
             Seat::bookParticularSeatOnDatabase($itemData['uuid'], $order);
 
             $item->quantity = 1;
             $item->uuid = $itemData['uuid'];
             $item->unit_price = $itemData['price'];
-            $item->subtotal = $itemData['price'] * $item->quantity;
+            $item->subtotal = $itemData['price'];
             $item->order_id = $order;
             $item->created_at = Carbon::now('Europe/Istanbul');
             $item->updated_at = Carbon::now('Europe/Istanbul');
