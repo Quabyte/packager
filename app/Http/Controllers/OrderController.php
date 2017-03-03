@@ -119,7 +119,7 @@ class OrderController extends Controller
             $order->save();
 
             $user = Auth::user();
-            Mail::to($user)->send(new ConfirmationEmail($order->id));
+//            Mail::to($user)->send(new ConfirmationEmail($order->id));
 
             return view('frontend.confirmation', compact('message', 'order'));
         }
