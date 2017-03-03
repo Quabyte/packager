@@ -61,7 +61,9 @@ class Order extends Model
         $order = new Order();
         $order->unique_id = $uuid;
         $order->status = 'not-completed';
-        $order->total = $data->total;
+        $order->subtotal = $data->total;
+        $order->comission = static::calculateCreditCardComission($data->total);
+        $order->total = $data->total + $order->comission;
         $order->currency = 949;
         $order->created_at = Carbon::now('Europe/Istanbul');
         $order->updated_at = Carbon::now('Europe/Istanbul');
@@ -83,7 +85,9 @@ class Order extends Model
 
         OrderItem::createItems($data->items, $order->id);
 
-        $order->total = Order::calculateOrderTotal($order->id);
+        $order->subtotal = Order::calculateOrderTotal($order->id);
+        $order->comission = Order::calculateCreditCardComission($order->subtotal);
+        $order->total = $order->subtotal + $order->comission;
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();
     }
@@ -123,6 +127,11 @@ class Order extends Model
         return $total;
     }
 
+    public static function calculateCreditCardComission($subtotal, $comissionRate = 0.02)
+    {
+        return $comission = $subtotal * $comissionRate;
+    }
+
     /**
      * Lists seats in the Order.
      *
@@ -148,7 +157,9 @@ class Order extends Model
 
         $order = Order::where('unique_id', '=', $uuid)->first();
 
-        $order->total = Order::calculateOrderTotal($order->id);
+        $order->subtotal = Order::calculateOrderTotal($order->id);
+        $order->comission = Order::calculateCreditCardComission($order->subtotal);
+        $order->total = $order->subtotal + $order->comission;
         $order->status = 'added-hotel';
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();

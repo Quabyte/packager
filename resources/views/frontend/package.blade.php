@@ -52,10 +52,14 @@
 
                     <div class="panel-footer-custom">
                         @if(Auth::guest())
+                            <p>Subtotal: {{ $order->subtotal }} EUR</p>
+                            <p>Credit Card Comission: {{ $order->comission }} EUR</p>
                             <p>TOTAL: {{ $order->total }} EUR</p>
                         @else
                             <div class="row">
                                 <div class="col-md-4">
+                                    <p>Subtotal: {{ $order->subtotal }}</p>
+                                    <p>Credit Card Comission: {{ $order->comission }}</p>
                                     <p>TOTAL: {{ $order->total }} EUR</p>
                                 </div>
                                 <div class="col-md-4">
