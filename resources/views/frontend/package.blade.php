@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-4">
                                 <h5>IMPORTANT DETAILS</h5>
-                                <p>- All packages include 1 sandwich, soft drink and snack.</p>
+                                {{--<p>- All packages include 1 sandwich, soft drink and snack.</p>--}}
                                 <p>- Optionaly you can add accommodation to your package.</p>
                                 <p>- You have 20 minutes before you finish your purchase.</p>
                                 <p>- In order to complete your purchase, please Register or Login below.</p>

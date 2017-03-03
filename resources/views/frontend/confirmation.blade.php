@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="panel-body">
-                        @foreach(\App\Models\Order::listSeats($order->id) as $seats)
+                        @foreach(\App\Models\Order::listSeats($order->id) as $seat)
                             @include('partials.itemsCard')
                         @endforeach
                         @foreach(\App\Models\Hotel::listHotels($order->id) as $hotel)
